@@ -4,10 +4,12 @@ set -e
 echo "🎓 Educator Agent - End-to-End Demo"
 echo "====================================="
 
-# Ensure virtual environment is active
-if [[ "$VIRTUAL_ENV" == "" ]]; then
+# Ensure virtual environment is active (if it exists)
+if [[ "$VIRTUAL_ENV" == "" ]] && [[ -f ".venv/bin/activate" ]]; then
     echo "📦 Activating virtual environment..."
     source .venv/bin/activate
+elif [[ "$VIRTUAL_ENV" == "" ]]; then
+    echo "📦 Using system Python environment..."
 fi
 
 # Navigate to code directory

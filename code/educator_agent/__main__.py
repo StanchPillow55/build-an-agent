@@ -10,6 +10,7 @@ parameters and rich-formatted JSON output.
 import argparse
 import json
 import sys
+from pathlib import Path
 from typing import List
 
 from rich.console import Console
@@ -252,8 +253,6 @@ def main() -> int:
         # Generate PowerPoint if requested
         if args.pptx:
             try:
-                from pathlib import Path
-
                 pptx_path = Path(args.pptx)
                 generated_files["pptx_path"] = pptx_path
 
@@ -287,7 +286,7 @@ def main() -> int:
 
                 notes = generate_notes(plan, model=args.model)
                 md_path = save_notes_to_markdown(notes, plan["lesson_title"])
-                generated_files["notes_path"] = md_path
+                generated_files["notes_path"] = Path(md_path)
 
                 if not args.quiet:
                     console.print(
@@ -305,7 +304,6 @@ def main() -> int:
         # Package outputs into ZIP if requested
         if args.zip:
             try:
-                from pathlib import Path
                 import tempfile
 
                 zip_path = Path(args.zip)
