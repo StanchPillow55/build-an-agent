@@ -64,6 +64,23 @@ python -m educator_agent \
   --json-only
 ```
 
+#### PowerPoint Generation
+```bash
+# Generate both curriculum plan and PowerPoint presentation
+python -m educator_agent \
+  --grade "8th Grade" \
+  --subject "Environmental Science" \
+  --pptx "ecosystem_lesson.pptx"
+
+# Generate presentation with custom parameters
+python -m educator_agent \
+  --grade "5th Grade" \
+  --subject "Mathematics" \
+  --baseline "basic arithmetic" \
+  --constraints "hands-on-activities,visual-learning" \
+  --pptx "math_lesson.pptx"
+```
+
 #### Available Flags
 
 | Flag | Required | Default | Description |
@@ -76,6 +93,7 @@ python -m educator_agent \
 | `--duration` | ❌ | "45 minutes" | Lesson duration |
 | `--json-only` | ❌ | `false` | Output only raw JSON |
 | `--quiet, -q` | ❌ | `false` | Suppress progress messages |
+| `--pptx` | ❌ | - | Generate PowerPoint presentation (specify output path) |
 
 #### Example Output
 
@@ -94,6 +112,7 @@ The CLI generates comprehensive curriculum plans with:
 - ✅ **Constraint Enforcement** - Built-in privacy protection and age-appropriate content
 - ✅ **Fallback Mode** - Works without API key for testing
 - ✅ **Comprehensive Testing** - Full test coverage with mocked responses
+- ✅ **PowerPoint Generation** - Automatic .pptx slide creation with images
 
 ### Testing
 

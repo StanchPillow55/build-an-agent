@@ -15,6 +15,7 @@ from .curriculum_planner import (
     plan_curriculum,
     CURRICULUM_SCHEMA,
 )
+from .slide_generator import create_deck
 
 __all__ = [
     "generate_prompt",
@@ -22,4 +23,5 @@ __all__ = [
     "validate_plan",
     "plan_curriculum",
     "CURRICULUM_SCHEMA",
+    "create_deck",
 ]

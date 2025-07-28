@@ -18,6 +18,7 @@ from rich.syntax import Syntax
 from rich.table import Table
 
 from .curriculum_planner import plan_curriculum
+from .slide_generator import create_deck
 
 console = Console()
 
@@ -96,6 +97,13 @@ Examples:
         "-q",
         action="store_true",
         help="Suppress progress messages and headers",
+    )
+
+    parser.add_argument(
+        "--pptx",
+        type=str,
+        metavar="PATH",
+        help="Generate PowerPoint presentation and save to specified path",
     )
 
     return parser
@@ -219,6 +227,33 @@ def main() -> int:
 
         # Display results
         display_curriculum_plan(plan, args.json_only, args.quiet)
+
+        # Generate PowerPoint if requested
+        if args.pptx:
+            try:
+                from pathlib import Path
+
+                pptx_path = Path(args.pptx)
+
+                if not args.quiet:
+                    console.print(
+                        "\n[bold yellow]📊 Generating PowerPoint presentation...[/bold yellow]"
+                    )
+
+                create_deck(plan, pptx_path)
+
+                if not args.quiet:
+                    console.print(
+                        f"[bold green]✅ Deck saved to {pptx_path}[/bold green]"
+                    )
+                else:
+                    print(f"Deck saved to {pptx_path}")
+
+            except Exception as e:
+                console.print(
+                    f"\n[bold red]❌ PowerPoint generation failed: {e}[/bold red]"
+                )
+                return 1
 
         if not args.quiet and not args.json_only:
             console.print("\n[bold green]🎉 Task completed successfully![/bold green]")
