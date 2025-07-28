@@ -3,9 +3,9 @@ name = "build-an-agent"
 description = "build-an-agent"
 version = "0.0.1"
 dependencies = [
-    "jupyterlab>=4.0.0",
-    "jupyterlab-git>=0.44.0",
-    "jupyter-app-launcher>=0.1.0",
+    "jupyterlab\u003e=4.0.0",
+    "jupyterlab-git\u003e=0.44.0",
+    "jupyter-app-launcher\u003e=0.1.0",
 ]
 
 [tool.brev]
