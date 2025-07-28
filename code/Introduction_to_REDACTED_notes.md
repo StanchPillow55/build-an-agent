@@ -44,6 +44,6 @@
 
 The following Open Educational Resources (OER) from OER Commons provide additional materials for this lesson:
 
-1. [https://oercommons.org/search?q=Solar%20System](https://oercommons.org/search?q=Solar%20System)
-2. [https://oercommons.org/search?q=Solar%20System&f.material_type=lesson-plan](https://oercommons.org/search?q=Solar%20System&f.material_type=lesson-plan)
-3. [https://oercommons.org/search?q=Solar%20System&f.material_type=activity](https://oercommons.org/search?q=Solar%20System&f.material_type=activity)
+1. [https://oercommons.org/search?q=Physics](https://oercommons.org/search?q=Physics)
+2. [https://oercommons.org/search?q=Physics&f.material_type=lesson-plan](https://oercommons.org/search?q=Physics&f.material_type=lesson-plan)
+3. [https://oercommons.org/search?q=Physics&f.material_type=activity](https://oercommons.org/search?q=Physics&f.material_type=activity)

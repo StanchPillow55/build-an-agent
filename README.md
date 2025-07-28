@@ -37,13 +37,30 @@ This project includes an **Educator Agent** - an AI-powered curriculum planning 
 
 ### Usage
 
-The Educator Agent can be used via command-line interface:
+The Educator Agent provides two modes of operation:
 
-#### Basic Usage
+#### Interactive Wizard Mode (Recommended)
+
+Run without arguments to launch the interactive wizard:
+
+```bash
+cd code
+python -m educator_agent
+```
+
+The wizard will guide you through:
+- 📝 **Basic inputs**: Grade level, subject, baseline knowledge, duration, constraints, AI model
+- 📊 **Output preferences**: PowerPoint generation, speaker notes, OER resources, ZIP packaging, Microsoft Copilot export
+- 📋 **Review**: Confirm your choices before generation
+- ⚡ **Progress tracking**: Real-time progress indicators for each step
+
+#### Non-Interactive Mode
+
+For automation or when you know exactly what you want:
+
 ```bash
 # Generate a curriculum for 8th Grade Environmental Science
-cd code
-python -m educator_agent --grade "8th Grade" --subject "Environmental Science"
+python -m educator_agent --non-interactive --grade "8th Grade" --subject "Environmental Science"
 ```
 
 #### Advanced Usage
@@ -140,6 +157,7 @@ python -m educator_agent \
 | `--quiet, -q` | ❌ | `false` | Suppress progress messages |
 | `--pptx` | ❌ | - | Generate PowerPoint presentation (specify output path) |
 | `--notes` | ❌ | `false` | Generate speaker notes in Markdown format |
+| `--oer` | ❌ | - | Include OER Commons resources (specify number to fetch) |
 | `--zip` | ❌ | - | Package all outputs into a ZIP file (specify output path) |
 | `--copilot` | ❌ | `false` | Export presentation to Microsoft 365 OneDrive using Copilot |
 
@@ -154,6 +172,7 @@ The CLI generates comprehensive curriculum plans with:
 
 ### Features
 
+- ✅ **Interactive CLI Wizard** - User-friendly guided setup with Typer prompts and rich progress indicators
 - ✅ **OpenAI Integration** - Uses GPT-4o by default with SDK v1.x
 - ✅ **JSON Schema Validation** - Ensures consistent, reliable output
 - ✅ **Rich CLI Interface** - Beautiful terminal output with tables and panels
@@ -162,6 +181,7 @@ The CLI generates comprehensive curriculum plans with:
 - ✅ **Comprehensive Testing** - Full test coverage with mocked responses
 - ✅ **PowerPoint Generation** - Automatic .pptx slide creation with images
 - ✅ **Speaker Notes** - Markdown-formatted notes for educators
+- ✅ **OER Commons Integration** - Live search and integration of Open Educational Resources
 - ✅ **Package Generation** - Complete ZIP packages with all materials
 - ✅ **Microsoft Copilot Integration** - Direct export to OneDrive using Graph API (beta)
 
