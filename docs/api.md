@@ -2,83 +2,197 @@
 
 This page provides comprehensive API documentation for the Build An Agent project, with a focus on the Educator Agent modules.
 
-## Educator Agent
+!!! note "Auto-Generated Documentation"
+    This page contains auto-generated API documentation. For live documentation with interactive examples, run `make docs` to start the development server.
 
-The Educator Agent is the main component for curriculum planning and educational content generation.
+## Educator Agent Modules
 
-### Curriculum Planner
+The Educator Agent consists of several key modules that work together to provide comprehensive curriculum planning capabilities.
 
-Core curriculum planning functionality with OpenAI integration.
+### Core Functions
 
-::: code.educator_agent.curriculum_planner
+#### Curriculum Planning
 
-### Content Sanitizer
+**Module:** `code.educator_agent.curriculum_planner`
 
-Content sanitization and PII detection for safe educational content.
+Core functions for curriculum generation and validation:
 
-::: code.educator_agent.sanitizer
+```python
+def plan_curriculum(params: Dict[str, Any]) -> Dict[str, Any]:
+    """Plan a curriculum given the input parameters.
+    
+    Args:
+        params: Dictionary containing:
+            - grade_level: Target grade level (e.g., "8th Grade")
+            - subject: Subject or topic
+            - baseline: Prior knowledge assumption
+            - constraints: List of constraints
+            - duration: Lesson duration
+    
+    Returns:
+        Validated curriculum plan dictionary
+    """
 
-### Slide Generator
+def generate_prompt(params: Dict[str, Any]) -> str:
+    """Generate a comprehensive prompt for curriculum planning."""
 
-PowerPoint presentation generation from curriculum plans.
+def call_llm(prompt: str, model: str = "gpt-4o") -> Dict[str, Any]:
+    """Call OpenAI LLM using new SDK v1.x style."""
 
-::: code.educator_agent.slide_generator
+def validate_plan(plan: Dict[str, Any]) -> None:
+    """Validate a curriculum plan against the schema."""
+```
 
-### Speaker Notes
+#### Content Sanitization
 
-Speaker notes generation for educators.
+**Module:** `code.educator_agent.sanitizer`
 
-::: code.educator_agent.speaker_notes
+Content safety and PII protection:
 
-### OER Resource Finder
+```python
+def clean_text(text: str) -> str:
+    """Clean text by removing profanity and replacing PII with [REDACTED].
+    
+    Args:
+        text: Input text to clean
+        
+    Returns:
+        Cleaned text with profanity censored and PII redacted
+    """
 
-Open Educational Resource discovery and integration.
+def enforce_constraints(plan: Dict[str, Any]) -> Dict[str, Any]:
+    """Enforce content constraints on a curriculum plan.
+    
+    Runs clean_text on every user-visible string in the curriculum JSON.
+    
+    Args:
+        plan: Curriculum plan dictionary
+        
+    Returns:
+        Cleaned curriculum plan
+    """
 
-::: code.educator_agent.oer_resource_finder
+class ContentSanitizer:
+    """Content sanitizer for educational materials.
+    
+    Features:
+    - Profanity filtering using better-profanity
+    - PII detection for names, emails, phone numbers, SSNs, credit cards
+    - Recursive cleaning of nested data structures
+    - Type preservation for non-string data
+    """
+```
 
-### Packager
+#### Slide Generation
 
-Package generation for complete educational materials.
+**Module:** `code.educator_agent.slide_generator`
 
-::: code.educator_agent.packager
+PowerPoint presentation generation:
 
-### Microsoft Copilot Integration
+```python
+def create_deck(curriculum_plan: Dict[str, Any], output_file: str) -> None:
+    """Create a PowerPoint presentation from curriculum plan.
+    
+    Args:
+        curriculum_plan: Validated curriculum dictionary
+        output_file: Output .pptx file path
+        
+    Features:
+    - Automatic slide generation from curriculum sections
+    - Image integration with educational content
+    - Professional slide layouts and design
+    """
+```
 
-Microsoft Graph API integration for OneDrive export.
+#### Speaker Notes
 
-::: code.educator_agent.copilot_pptx
+**Module:** `code.educator_agent.speaker_notes`
 
-## Document Generation Agent
+Generate detailed speaker notes for educators:
 
-Example agent for research and document writing tasks.
+```python
+def generate_speaker_notes(curriculum_plan: Dict[str, Any]) -> str:
+    """Generate comprehensive speaker notes in Markdown format.
+    
+    Args:
+        curriculum_plan: Curriculum dictionary
+        
+    Returns:
+        Formatted Markdown speaker notes
+    """
+```
 
-### Main Agent
+#### Package Generation
 
-::: code.docgen_agent.agent
+**Module:** `code.educator_agent.packager`
 
-### Research Tools
+Bundle complete educational materials:
 
-::: code.docgen_agent.researcher
+```python
+def create_package(curriculum_plan: Dict[str, Any], 
+                  output_zip: str, 
+                  include_pptx: bool = False,
+                  include_notes: bool = False) -> None:
+    """Create a complete educational package.
+    
+    Args:
+        curriculum_plan: Curriculum dictionary
+        output_zip: Output ZIP file path
+        include_pptx: Include PowerPoint presentation
+        include_notes: Include speaker notes
+    """
+```
 
-### Author Tools
+### Microsoft Integration
 
-::: code.docgen_agent.author
+#### Copilot Export
 
-### Available Tools
+**Module:** `code.educator_agent.copilot_pptx`
 
-::: code.docgen_agent.tools
+Microsoft Graph API integration:
 
-## Curriculum Agent
+```python
+def export_to_onedrive(pptx_path: str, title: str) -> Dict[str, str]:
+    """Export presentation to Microsoft OneDrive.
+    
+    Args:
+        pptx_path: Local PowerPoint file path
+        title: Presentation title
+        
+    Returns:
+        Dictionary with share_url and file_id
+        
+    Prerequisites:
+    - Microsoft 365 EDU account
+    - Azure app with Graph API permissions
+    - Environment variables: MS_CLIENT_ID, MS_TENANT_ID, MS_CLIENT_SECRET
+    """
+```
 
-Core curriculum agent implementation.
+### CLI Interface
 
-### Main Agent
+**Module:** `code.educator_agent.__main__`
 
-::: code.curriculum_agent.curriculum_agent
+Command-line interface with argument parsing and rich output formatting.
 
-### Data Models
+**Usage:**
+```bash
+python -m educator_agent --grade "8th Grade" --subject "Environmental Science"
+```
 
-::: code.curriculum_agent.models
+**Available Arguments:**
+- `--grade`: Target grade level (required)
+- `--subject`: Subject or topic (required) 
+- `--baseline`: Prior knowledge baseline
+- `--constraints`: Comma-separated constraints
+- `--model`: OpenAI model to use
+- `--duration`: Lesson duration
+- `--pptx`: Generate PowerPoint presentation
+- `--notes`: Generate speaker notes
+- `--zip`: Create complete package
+- `--copilot`: Export to Microsoft OneDrive
+- `--json-only`: Output raw JSON only
+- `--quiet`: Suppress progress messages
 
 ## Utility Functions
 

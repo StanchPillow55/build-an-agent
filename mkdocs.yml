@@ -40,6 +40,7 @@ plugins:
   - mkdocstrings:
       handlers:
         python:
+          paths: [code]
           options:
             docstring_style: google
             show_source: true
