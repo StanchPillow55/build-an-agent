@@ -14,4 +14,5 @@ python-pptx~=1.0.2
 pillow~=10.4.0
 requests~=2.32.3
 backoff~=2.2.1
+typer~=0.16.0
 msal~=1.33.0
