@@ -201,6 +201,38 @@ This demo will:
 - Package everything into a convenient ZIP file
 - Demonstrate all major features in one command
 
+### Documentation
+
+Comprehensive documentation is available using MkDocs:
+
+```bash
+# Install documentation dependencies
+pip install -r requirements-dev.txt
+
+# Serve documentation locally with auto-reload
+make docs
+# or
+mkdocs serve
+
+# Build documentation for production
+make docs-build
+# or
+mkdocs build
+
+# Deploy to GitHub Pages
+make docs-deploy
+# or
+mkdocs gh-deploy
+```
+
+The documentation includes:
+- **📖 Usage Guide** - Detailed CLI usage and examples
+- **🔧 API Reference** - Complete function documentation
+- **💡 Examples** - Step-by-step tutorials for curriculum planning, PowerPoint generation, and content sanitization
+- **🚀 Quick Start** - Get up and running in minutes
+
+Visit the live documentation at: [https://stanchpillow55.github.io/build-an-agent/](https://stanchpillow55.github.io/build-an-agent/)
+
 ### Testing
 
 ```bash
