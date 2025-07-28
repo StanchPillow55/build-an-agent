@@ -47,4 +47,3 @@ The following Open Educational Resources (OER) from OER Commons provide addition
 1. [https://oercommons.org/search?q=Solar%20System](https://oercommons.org/search?q=Solar%20System)
 2. [https://oercommons.org/search?q=Solar%20System&f.material_type=lesson-plan](https://oercommons.org/search?q=Solar%20System&f.material_type=lesson-plan)
 3. [https://oercommons.org/search?q=Solar%20System&f.material_type=activity](https://oercommons.org/search?q=Solar%20System&f.material_type=activity)
-

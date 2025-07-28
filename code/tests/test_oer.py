@@ -126,7 +126,12 @@ class TestOERResourceFinder(unittest.TestCase):
 
         # Should return fallback URLs instead of empty list
         self.assertEqual(len(urls), 5)  # Default count
-        self.assertTrue(all(url.startswith("https://oercommons.org/search?q=test-topic") for url in urls))
+        self.assertTrue(
+            all(
+                url.startswith("https://oercommons.org/search?q=test-topic")
+                for url in urls
+            )
+        )
         self.assertEqual(len(responses.calls), 1)  # Should not retry on 4xx
 
     @responses.activate
