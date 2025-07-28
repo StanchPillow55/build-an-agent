@@ -10,4 +10,100 @@ By the end of this hackathon, you'll know how to create an agent that can:
 - **Make decisions** about next steps based on available information
 - **Handle complex multi-step workflows** autonomously
 
+## Educator Agent CLI
+
+This project includes an **Educator Agent** - an AI-powered curriculum planning tool with constraint enforcement and rich CLI interface.
+
+### Installation
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/StanchPillow55/build-an-agent.git
+   cd build-an-agent
+   ```
+
+2. **Install dependencies:**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. **Set up your OpenAI API key:**
+   ```bash
+   # Add to .env file
+   echo "OPENAI_API_KEY=your_api_key_here" >> .env
+   ```
+
+### Usage
+
+The Educator Agent can be used via command-line interface:
+
+#### Basic Usage
+```bash
+# Generate a curriculum for 8th Grade Environmental Science
+cd code
+python -m educator_agent --grade "8th Grade" --subject "Environmental Science"
+```
+
+#### Advanced Usage
+```bash
+# Specify baseline knowledge and custom constraints
+python -m educator_agent \
+  --grade "5th Grade" \
+  --subject "Mathematics" \
+  --baseline "basic arithmetic and counting" \
+  --constraints "age-appropriate,hands-on-activities,no-calculators" \
+  --model "gpt-4"
+```
+
+#### JSON Output Only
+```bash
+# Output raw JSON for programmatic use
+python -m educator_agent \
+  --grade "10th Grade" \
+  --subject "Biology" \
+  --json-only
+```
+
+#### Available Flags
+
+| Flag | Required | Default | Description |
+|------|----------|---------|-------------|
+| `--grade` | ✅ | - | Target grade level (e.g., "8th Grade") |
+| `--subject` | ✅ | - | Subject or topic (e.g., "Environmental Science") |
+| `--baseline` | ❌ | "grade-appropriate prior knowledge" | Audience knowledge baseline |
+| `--constraints` | ❌ | "age-appropriate,privacy-protecting" | Comma-separated constraints |
+| `--model` | ❌ | "gpt-4o" | OpenAI model to use |
+| `--duration` | ❌ | "45 minutes" | Lesson duration |
+| `--json-only` | ❌ | `false` | Output only raw JSON |
+| `--quiet, -q` | ❌ | `false` | Suppress progress messages |
+
+#### Example Output
+
+The CLI generates comprehensive curriculum plans with:
+- **📚 Lesson Title** - Clear, engaging lesson titles
+- **🎯 Learning Objectives** - Specific, measurable goals
+- **📖 Content Outline** - Structured lesson sections with descriptions
+- **📝 Suggested Assessments** - Multiple assessment methods
+- **💾 JSON Schema** - Validated output for integration
+
+### Features
+
+- ✅ **OpenAI Integration** - Uses GPT-4o by default with SDK v1.x
+- ✅ **JSON Schema Validation** - Ensures consistent, reliable output
+- ✅ **Rich CLI Interface** - Beautiful terminal output with tables and panels
+- ✅ **Constraint Enforcement** - Built-in privacy protection and age-appropriate content
+- ✅ **Fallback Mode** - Works without API key for testing
+- ✅ **Comprehensive Testing** - Full test coverage with mocked responses
+
+### Testing
+
+```bash
+# Run the test suite
+pip install -r requirements-dev.txt
+pytest -q
+
+# Run specific tests
+pytest tests/test_planner.py -v
+```
+
 
