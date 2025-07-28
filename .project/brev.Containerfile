@@ -49,7 +49,7 @@ USER $NVWB_USERNAME
 COPY --chown=$NVWB_UID:$NVWB_GID  ["requirements.txt", "/opt/project/build/"]
 
 RUN /opt/conda/bin/pip install --user \
-    -r /opt/project/build/requirements.txt 
+    -r /opt/project/build/requirements.txt
 
 COPY --chown=$NVWB_UID:$NVWB_GID  ["postBuild.bash", "/opt/project/build/"]
 

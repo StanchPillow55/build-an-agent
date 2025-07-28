@@ -34,4 +34,3 @@ jobs:
         IMAGE=ghcr.io/$(echo ${{ github.repository_owner }}/${{ github.event.repository.name }} | tr '[:upper:]' '[:lower:]')/devx
         docker push $IMAGE:${{ steps.vars.outputs.timestamp }}
         docker push $IMAGE:${{ steps.vars.outputs.branch }}
-

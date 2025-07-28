@@ -11,4 +11,3 @@ By the end of this hackathon, you'll know how to create an agent that can:
 - Maintain conversation context
 - Make decisions about next steps
 - Handle complex multi-step workflows
-

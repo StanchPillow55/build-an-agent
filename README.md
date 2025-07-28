@@ -105,5 +105,3 @@ pytest -q
 # Run specific tests
 pytest tests/test_planner.py -v
 ```
-
-

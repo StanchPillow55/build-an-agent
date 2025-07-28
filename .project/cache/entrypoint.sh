@@ -46,4 +46,3 @@ fi
 
 # Run the command, possibly dropping privileges first
 user_exec "$@"
-

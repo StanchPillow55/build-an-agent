@@ -19,4 +19,4 @@ That's it! The agent handles all the complexity behind the scenes, delivering a 
 
 <button onclick="openOrCreateFileInJupyterLab('code/researcher_client.ipynb');"><i class="fa-solid fa-flask"></i> Report Agent</button>
 
-See the report generation in action! Prompt the agent to search for information, gather relevant sources, and synthesize its findings. 
+See the report generation in action! Prompt the agent to search for information, gather relevant sources, and synthesize its findings.

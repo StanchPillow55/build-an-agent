@@ -1,5 +1,5 @@
 # Share Your Agent
- 
+
 <img src="_static/robots/ballerina.png" alt="Share Robot" style="float:right; max-width:300px;margin:25px;" />
 
 Ready to share your AI agent with the world? Let's turn your agent into a Brev launchable so others can use it!
@@ -10,7 +10,7 @@ Before you can publish your changes, you'll need to have your own copy of this r
 
 Now you can
 [<i class="fa-solid fa-code-fork"></i> fork this repo](https://github.com/Hannahhiendo/build-an-agent/fork)
-to your own profile! 
+to your own profile!
 
 <!-- fold:break -->
 
@@ -78,14 +78,14 @@ git push
 
 The fastest way to share any AI Workflow is by creating a Launchable.
 
-Launchables allow you pair your code up with the hardware it needs to run. 
+Launchables allow you pair your code up with the hardware it needs to run.
 You can then share your Launchable so anyone can run it on their own account.
 
 To get started making your own launchable, open the [Brev Launchable Creator](https://brev.nvidia.com/launchables/create).
 
 <!-- fold:break -->
 
-- Select: `I have my files in a git repository` 
+- Select: `I have my files in a git repository`
 - Enter the URL to your forked repository: `https://github.com/YOUR_USERNAME/build-an-agent.git`
 - Select `With container(s)` for the runtime environment
 
