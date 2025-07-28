@@ -19,6 +19,7 @@ from rich.table import Table
 
 from .curriculum_planner import plan_curriculum
 from .slide_generator import create_deck
+from .speaker_notes import generate_notes, save_notes_to_markdown
 
 console = Console()
 
@@ -104,6 +105,12 @@ Examples:
         type=str,
         metavar="PATH",
         help="Generate PowerPoint presentation and save to specified path",
+    )
+
+    parser.add_argument(
+        "--notes",
+        action="store_true",
+        help="Output a Markdown file of speaker notes for the lesson",
     )
 
     return parser
@@ -252,6 +259,30 @@ def main() -> int:
             except Exception as e:
                 console.print(
                     f"\n[bold red]❌ PowerPoint generation failed: {e}[/bold red]"
+                )
+                return 1
+
+        # Generate speaker notes if requested
+        if args.notes:
+            try:
+                if not args.quiet:
+                    console.print(
+                        "\n[bold yellow]📝 Generating speaker notes...[/bold yellow]"
+                    )
+
+                notes = generate_notes(plan, model=args.model)
+                md_path = save_notes_to_markdown(notes, plan["lesson_title"])
+
+                if not args.quiet:
+                    console.print(
+                        f"[bold green]✅ Speaker notes saved to {md_path}[/bold green]"
+                    )
+                else:
+                    print(f"Speaker notes saved to {md_path}")
+
+            except Exception as e:
+                console.print(
+                    f"\n[bold red]❌ Speaker notes generation failed: {e}[/bold red]"
                 )
                 return 1
 
