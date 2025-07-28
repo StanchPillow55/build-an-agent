@@ -1,47 +1,88 @@
 """
-OER Resource Finder Module
-
-This module provides functionality to suggest Open Educational Resources (OER)
-for educational topics using OER Commons.
+OER Commons API integration for finding open educational resources.
 """
 
+import requests
+import backoff
 from typing import List
+from urllib.parse import quote
+
+
+@backoff.on_exception(
+    backoff.expo,
+    requests.exceptions.HTTPError,
+    max_tries=3,
+    giveup=lambda e: e.response.status_code < 500,
+)
+def _make_oer_request(api_url: str, params: dict) -> dict:
+    """Make the actual API request with retry logic."""
+    response = requests.get(api_url, params=params, timeout=10)
+    response.raise_for_status()
+    return response.json()
 
 
 def suggest_oer(topic: str, count: int = 5) -> List[str]:
     """
-    Suggest Open Educational Resources (OER) for a given topic.
+    Search OER Commons for educational resources on a given topic.
 
     Args:
-        topic (str): The educational topic to find resources for
-        count (int): Number of resources to return (default: 5)
+        topic: The search topic/query
+        count: Maximum number of resources to return (default 5)
 
     Returns:
-        List[str]: List of OER Commons URLs for the topic
+        List of HTTPS URLs to OER Commons resources
 
-    TODO: Implement real OER Commons search integration
-    Currently returns hard-coded sample URLs for testing purposes.
+    Raises:
+        requests.RequestException: If API request fails after retries
     """
-    # Hard-coded sample OER Commons URLs for testing
-    sample_resources = [
-        "https://www.oercommons.org/courses/introduction-to-biology",
-        "https://www.oercommons.org/courses/environmental-science-fundamentals",
-        "https://www.oercommons.org/courses/mathematics-grade-8",
-        "https://www.oercommons.org/courses/chemistry-basics",
-        "https://www.oercommons.org/courses/physics-concepts",
-        "https://www.oercommons.org/courses/earth-science-exploration",
-        "https://www.oercommons.org/courses/algebra-foundations",
-        "https://www.oercommons.org/courses/geometry-essentials",
-        "https://www.oercommons.org/courses/history-world-civilizations",
-        "https://www.oercommons.org/courses/literature-appreciation",
+    # Encode the topic for URL safety
+    encoded_topic = quote(topic)
+
+    # Build the API URL
+    api_url = f"https://oercommons.org/api/v1/search"
+    params = {"search": topic, "per_page": count, "only": "resource"}
+
+    try:
+        # Make the API request with retry logic
+        data = _make_oer_request(api_url, params)
+
+        # Extract URLs from the results
+        urls = []
+        if "results" in data:
+            for result in data["results"]:
+                if "url" in result and result["url"].strip():
+                    url = result["url"].strip()
+                    # Ensure HTTPS URLs
+                    if url.startswith("http://"):
+                        url = url.replace("http://", "https://", 1)
+                    elif not url.startswith("https://"):
+                        url = f"https://www.oercommons.org{url}"
+                    urls.append(url)
+
+        return urls[:count]  # Ensure we don't exceed requested count
+
+    except requests.RequestException as e:
+        print(
+            f"Warning: OER Commons API not accessible, using search-based URLs instead."
+        )
+        # Fallback: create realistic OER Commons search URLs
+        return _generate_fallback_oer_urls(topic, count)
+
+
+def _generate_fallback_oer_urls(topic: str, count: int) -> List[str]:
+    """Generate fallback OER Commons URLs when API is not accessible."""
+    encoded_topic = quote(topic)
+
+    # Create search-based URLs that educators can use to find resources
+    fallback_urls = [
+        f"https://oercommons.org/search?q={encoded_topic}",
+        f"https://oercommons.org/search?q={encoded_topic}&f.material_type=lesson-plan",
+        f"https://oercommons.org/search?q={encoded_topic}&f.material_type=activity",
+        f"https://oercommons.org/search?q={encoded_topic}&f.material_type=assessment",
+        f"https://oercommons.org/search?q={encoded_topic}&f.material_type=textbook",
+        f"https://oercommons.org/search?q={encoded_topic}&f.material_type=interactive",
+        f"https://oercommons.org/search?q={encoded_topic}&f.material_type=game",
+        f"https://oercommons.org/search?q={encoded_topic}&f.material_type=simulation",
     ]
 
-    # Return the requested number of resources, cycling through if needed
-    if count <= len(sample_resources):
-        return sample_resources[:count]
-    else:
-        # If more resources requested than available, cycle through the list
-        result = []
-        for i in range(count):
-            result.append(sample_resources[i % len(sample_resources)])
-        return result
+    return fallback_urls[:count]

@@ -20,6 +20,11 @@ from rich.table import Table
 from rich.panel import Panel
 from dotenv import load_dotenv
 
+try:
+    from .sanitizer import enforce_constraints
+except ImportError:
+    from sanitizer import enforce_constraints
+
 # Load environment variables
 load_dotenv()
 
@@ -159,6 +164,8 @@ def plan_curriculum(params: Dict[str, Any]) -> Dict[str, Any]:
     prompt = generate_prompt(params)
     plan = call_llm(prompt)
     validate_plan(plan)
+    # Apply content sanitization as final step
+    plan = enforce_constraints(plan)
     return plan
 
 

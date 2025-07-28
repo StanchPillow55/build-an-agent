@@ -177,7 +177,10 @@ Format as markdown."""
 
 
 def save_notes_to_markdown(
-    notes: Dict[int, str], lesson_title: str, output_path: str = None
+    notes: Dict[int, str],
+    lesson_title: str,
+    output_path: str = None,
+    oer_resources: list = None,
 ) -> str:
     """
     Save speaker notes to a markdown file.
@@ -186,6 +189,7 @@ def save_notes_to_markdown(
         notes: Dictionary of slide index to speaker notes
         lesson_title: Title of the lesson for filename
         output_path: Optional custom output path
+        oer_resources: Optional list of OER Commons URLs to include
 
     Returns:
         Path to the saved markdown file
@@ -211,6 +215,14 @@ def save_notes_to_markdown(
 
         markdown_content += f"## Slide {slide_index}: {slide_title}\n\n"
         markdown_content += notes[slide_index] + "\n\n"
+
+    # Add OER resources section if provided
+    if oer_resources:
+        markdown_content += "## Additional Resources\n\n"
+        markdown_content += "The following Open Educational Resources (OER) from OER Commons provide additional materials for this lesson:\n\n"
+        for i, url in enumerate(oer_resources, 1):
+            markdown_content += f"{i}. [{url}]({url})\n"
+        markdown_content += "\n"
 
     # Write to file
     with open(output_path, "w", encoding="utf-8") as f:

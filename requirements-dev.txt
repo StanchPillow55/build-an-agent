@@ -4,3 +4,4 @@ pytest-mock>=3.10.0
 pre-commit>=3.0.0
 black>=23.0.0
 flake8>=6.0.0
+responses>=0.25.0

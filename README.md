@@ -103,6 +103,27 @@ python -m educator_agent \
   --zip "complete_package.zip"
 ```
 
+#### Microsoft Copilot / Graph PowerPoint Export (Beta)
+```bash
+# Export presentation directly to OneDrive using Microsoft Graph API
+python -m educator_agent \
+  --grade "8th Grade" \
+  --subject "Environmental Science" \
+  --copilot
+```
+
+**Prerequisites for Copilot Export:**
+1. Microsoft 365 EDU account with appropriate permissions
+2. Registered Azure app with Graph API permissions:
+   - `Files.ReadWrite.All`
+   - `Sites.ReadWrite.All`
+3. Environment variables set in `.env`:
+   ```bash
+   MS_CLIENT_ID=your_azure_app_client_id
+   MS_TENANT_ID=your_azure_tenant_id
+   MS_CLIENT_SECRET=your_azure_app_client_secret
+   ```
+
 #### Available Flags
 
 | Flag | Required | Default | Description |
@@ -118,6 +139,7 @@ python -m educator_agent \
 | `--pptx` | ❌ | - | Generate PowerPoint presentation (specify output path) |
 | `--notes` | ❌ | `false` | Generate speaker notes in Markdown format |
 | `--zip` | ❌ | - | Package all outputs into a ZIP file (specify output path) |
+| `--copilot` | ❌ | `false` | Export presentation to Microsoft 365 OneDrive using Copilot |
 
 #### Example Output
 
@@ -139,6 +161,7 @@ The CLI generates comprehensive curriculum plans with:
 - ✅ **PowerPoint Generation** - Automatic .pptx slide creation with images
 - ✅ **Speaker Notes** - Markdown-formatted notes for educators
 - ✅ **Package Generation** - Complete ZIP packages with all materials
+- ✅ **Microsoft Copilot Integration** - Direct export to OneDrive using Graph API (beta)
 
 ### End-to-End Demo
 

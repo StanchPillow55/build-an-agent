@@ -22,6 +22,8 @@ from .curriculum_planner import plan_curriculum
 from .slide_generator import create_deck
 from .speaker_notes import generate_notes, save_notes_to_markdown
 from .packager import package_outputs
+from .copilot_pptx import export_to_copilot, CopilotPowerPointError
+from .oer_resource_finder import suggest_oer
 
 console = Console()
 
@@ -120,6 +122,19 @@ Examples:
         type=str,
         metavar="PATH",
         help="Package all outputs into a ZIP file at the specified path",
+    )
+
+    parser.add_argument(
+        "--copilot",
+        action="store_true",
+        help="Export presentation to Microsoft 365 OneDrive using Copilot (requires MS_CLIENT_ID, MS_TENANT_ID, MS_CLIENT_SECRET)",
+    )
+
+    parser.add_argument(
+        "--oer",
+        type=int,
+        metavar="COUNT",
+        help="Include OER Commons resources in output (specify number of resources to fetch)",
     )
 
     return parser
@@ -244,6 +259,35 @@ def main() -> int:
         # Display results
         display_curriculum_plan(plan, args.json_only, args.quiet)
 
+        # Fetch OER resources if requested
+        oer_resources = []
+        if args.oer:
+            if not args.quiet:
+                console.print(
+                    f"\n[bold yellow]🔍 Fetching {args.oer} OER Commons resources for '{args.subject}'...[/bold yellow]"
+                )
+
+            oer_resources = suggest_oer(args.subject, count=args.oer)
+
+            if oer_resources:
+                if not args.quiet and not args.json_only:
+                    console.print("\n[bold blue]📚 OER Commons Resources:[/bold blue]")
+                    for i, url in enumerate(oer_resources, 1):
+                        console.print(f"  {i}. {url}")
+                elif args.json_only:
+                    # For JSON-only mode, just print the URLs
+                    for url in oer_resources:
+                        print(url)
+                else:
+                    # For quiet mode, still print URLs
+                    for url in oer_resources:
+                        print(url)
+            else:
+                if not args.quiet:
+                    console.print(
+                        "\n[yellow]⚠️  No OER resources found for this topic[/yellow]"
+                    )
+
         # Track generated files for potential packaging
         generated_files = {
             "pptx_path": None,
@@ -285,7 +329,9 @@ def main() -> int:
                     )
 
                 notes = generate_notes(plan, model=args.model)
-                md_path = save_notes_to_markdown(notes, plan["lesson_title"])
+                md_path = save_notes_to_markdown(
+                    notes, plan["lesson_title"], oer_resources=oer_resources
+                )
                 generated_files["notes_path"] = Path(md_path)
 
                 if not args.quiet:
@@ -344,6 +390,33 @@ def main() -> int:
 
             except Exception as e:
                 console.print(f"\n[bold red]❌ ZIP packaging failed: {e}[/bold red]")
+                return 1
+
+        # Export to Microsoft Copilot if requested
+        if args.copilot:
+            try:
+                if not args.quiet:
+                    console.print(
+                        "\n[bold yellow]🤖 Exporting to Microsoft 365 OneDrive with Copilot...[/bold yellow]"
+                    )
+
+                share_url = export_to_copilot(plan)
+
+                if not args.quiet:
+                    console.print(
+                        "[bold green]✅ Presentation exported to OneDrive[/bold green]"
+                    )
+                    console.print(f"[bold blue]🔗 Share URL: {share_url}[/bold blue]")
+                else:
+                    print(f"Copilot presentation URL: {share_url}")
+
+            except CopilotPowerPointError as e:
+                console.print(f"\n[bold red]❌ Copilot export failed: {e}[/bold red]")
+                return 1
+            except Exception as e:
+                console.print(
+                    f"\n[bold red]❌ Unexpected Copilot error: {e}[/bold red]"
+                )
                 return 1
 
         if not args.quiet and not args.json_only:
