@@ -81,6 +81,28 @@ python -m educator_agent \
   --pptx "math_lesson.pptx"
 ```
 
+#### Speaker Notes Generation
+```bash
+# Generate speaker notes along with the curriculum plan
+python -m educator_agent \
+  --grade "8th Grade" \
+  --subject "Environmental Science" \
+  --notes
+```
+
+#### Complete Package Generation
+```bash
+# Generate everything: curriculum, PowerPoint, notes, and package into ZIP
+python -m educator_agent \
+  --grade "8th Grade" \
+  --subject "Environmental Science" \
+  --baseline "No prior knowledge of ecosystems" \
+  --constraints "PII-safe, simple language" \
+  --pptx "lesson.pptx" \
+  --notes \
+  --zip "complete_package.zip"
+```
+
 #### Available Flags
 
 | Flag | Required | Default | Description |
@@ -94,6 +116,8 @@ python -m educator_agent \
 | `--json-only` | ❌ | `false` | Output only raw JSON |
 | `--quiet, -q` | ❌ | `false` | Suppress progress messages |
 | `--pptx` | ❌ | - | Generate PowerPoint presentation (specify output path) |
+| `--notes` | ❌ | `false` | Generate speaker notes in Markdown format |
+| `--zip` | ❌ | - | Package all outputs into a ZIP file (specify output path) |
 
 #### Example Output
 
@@ -113,6 +137,24 @@ The CLI generates comprehensive curriculum plans with:
 - ✅ **Fallback Mode** - Works without API key for testing
 - ✅ **Comprehensive Testing** - Full test coverage with mocked responses
 - ✅ **PowerPoint Generation** - Automatic .pptx slide creation with images
+- ✅ **Speaker Notes** - Markdown-formatted notes for educators
+- ✅ **Package Generation** - Complete ZIP packages with all materials
+
+### End-to-End Demo
+
+Try the complete educator agent experience with our demo script:
+
+```bash
+# Run the comprehensive demo
+bash scripts/demo_end_to_end.sh
+```
+
+This demo will:
+- Generate a complete curriculum plan for 8th Grade Environmental Science
+- Create a PowerPoint presentation with images
+- Generate speaker notes in Markdown format
+- Package everything into a convenient ZIP file
+- Demonstrate all major features in one command
 
 ### Testing
 

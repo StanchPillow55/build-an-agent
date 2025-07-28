@@ -20,6 +20,7 @@ from rich.table import Table
 from .curriculum_planner import plan_curriculum
 from .slide_generator import create_deck
 from .speaker_notes import generate_notes, save_notes_to_markdown
+from .packager import package_outputs
 
 console = Console()
 
@@ -111,6 +112,13 @@ Examples:
         "--notes",
         action="store_true",
         help="Output a Markdown file of speaker notes for the lesson",
+    )
+
+    parser.add_argument(
+        "--zip",
+        type=str,
+        metavar="PATH",
+        help="Package all outputs into a ZIP file at the specified path",
     )
 
     return parser
@@ -235,12 +243,19 @@ def main() -> int:
         # Display results
         display_curriculum_plan(plan, args.json_only, args.quiet)
 
+        # Track generated files for potential packaging
+        generated_files = {
+            "pptx_path": None,
+            "notes_path": None,
+        }
+
         # Generate PowerPoint if requested
         if args.pptx:
             try:
                 from pathlib import Path
 
                 pptx_path = Path(args.pptx)
+                generated_files["pptx_path"] = pptx_path
 
                 if not args.quiet:
                     console.print(
@@ -272,6 +287,7 @@ def main() -> int:
 
                 notes = generate_notes(plan, model=args.model)
                 md_path = save_notes_to_markdown(notes, plan["lesson_title"])
+                generated_files["notes_path"] = md_path
 
                 if not args.quiet:
                     console.print(
@@ -284,6 +300,52 @@ def main() -> int:
                 console.print(
                     f"\n[bold red]❌ Speaker notes generation failed: {e}[/bold red]"
                 )
+                return 1
+
+        # Package outputs into ZIP if requested
+        if args.zip:
+            try:
+                from pathlib import Path
+                import tempfile
+
+                zip_path = Path(args.zip)
+
+                if not args.quiet:
+                    console.print(
+                        "\n[bold yellow]📦 Packaging outputs into ZIP file...[/bold yellow]"
+                    )
+
+                # Create temporary JSON file for the plan
+                temp_json = None
+                with tempfile.NamedTemporaryFile(
+                    mode="w", suffix=".json", delete=False
+                ) as f:
+                    json.dump(plan, f, indent=2)
+                    temp_json = Path(f.name)
+
+                try:
+                    package_path = package_outputs(
+                        plan_json_path=temp_json,
+                        pptx_path=generated_files["pptx_path"],
+                        notes_path=generated_files["notes_path"],
+                        out_zip=zip_path,
+                        plan_data=plan,
+                    )
+
+                    if not args.quiet:
+                        console.print(
+                            f"[bold green]✅ Package saved to {package_path}[/bold green]"
+                        )
+                    else:
+                        print(f"Package saved to {package_path}")
+
+                finally:
+                    # Clean up temporary JSON file
+                    if temp_json and temp_json.exists():
+                        temp_json.unlink()
+
+            except Exception as e:
+                console.print(f"\n[bold red]❌ ZIP packaging failed: {e}[/bold red]")
                 return 1
 
         if not args.quiet and not args.json_only:
