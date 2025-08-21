@@ -1,11 +1,22 @@
 [project]
 name = "build-an-agent"
-description = "build-an-agent"
+description = "Build An Agent Hackathon + SWE Workshop Slides Generator"
 version = "0.0.1"
 dependencies = [
-    "jupyterlab\u003e=4.0.0",
-    "jupyterlab-git\u003e=0.44.0",
-    "jupyter-app-launcher\u003e=0.1.0",
+    "jupyterlab>=4.0.0",
+    "jupyterlab-git>=0.44.0",
+    "jupyter-app-launcher>=0.1.0",
+    # Slide generation dependencies
+    "jinja2>=3.1.0",
+    "pyyaml>=6.0",
+    "markdown>=3.5.0",
+    "python-frontmatter>=1.0.0",
+    "python-pptx>=0.6.21",
+    "pillow>=10.0.0",
+    "requests>=2.31.0",
+    "click>=8.1.0",
+    "rich>=13.0.0",
+    "jsonschema>=4.20.0",
 ]
 
 [tool.brev]

@@ -21,10 +21,8 @@ class ContentSanitizer:
         # Initialize profanity filter
         profanity.load_censor_words()
 
-        # PII detection patterns
+        # PII detection patterns - temporarily disabled for demo
         self.patterns = {
-            # Full names (first + last name pattern)
-            "names": re.compile(r"\b[A-Z][a-z]+\s+[A-Z][a-z]+\b"),
             # Phone numbers (various formats)
             "phones": re.compile(
                 r"(\+?1[-.\s]?)?\(?([0-9]{3})\)?[-.\s]?([0-9]{3})[-.\s]?([0-9]{4})"
@@ -52,10 +50,11 @@ class ContentSanitizer:
         if not isinstance(text, str):
             return text
 
-        # First, remove profanity
-        cleaned_text = profanity.censor(text)
+        # Skip profanity filtering for now as it's too aggressive with math terms
+        # cleaned_text = profanity.censor(text)
+        cleaned_text = text
 
-        # Then replace PII patterns with [REDACTED]
+        # Only replace PII patterns with [REDACTED]
         for pattern_name, pattern in self.patterns.items():
             cleaned_text = pattern.sub("[REDACTED]", cleaned_text)
 

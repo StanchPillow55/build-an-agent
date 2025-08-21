@@ -1,0 +1,153 @@
+# Senior Work Day Event - Week 11
+# Get Your Career in Gear - Career fair table presence
+
+id: "senior-work-day"
+title: "Get Your Career in Gear - Senior Work Day"
+event_type: "career_fair_table"
+week: 11
+date: "2025-11-12"
+time: "16:30-18:00"
+location: "Student Union Room 3"
+duration: "90 minutes"
+
+facilitators:
+  - "Hoplite Senior Members"
+  - "SJSU Career Center Staff"
+  - "Graduate Students and Alumni"
+
+objectives:
+  - "Conduct technical interview practice with experienced mentors"
+  - "Receive personalized portfolio and resume feedback"
+  - "Connect with senior students and recent graduates for mentorship"
+  - "Identify specific next steps for job search preparation"
+
+materials_needed:
+  - "Table placard PDF with QR codes and branding"
+  - "Portfolio review checklist for consistent feedback"
+  - "Technical interview practice prompt cards"
+  - "Resume review templates and best practice guides"
+  - "Business cards or contact information for follow-up mentoring"
+  - "Sign-up sheets for ongoing mentorship relationships"
+
+table_setup:
+  location: "Student Union Room 3 - Center Tables"
+  table_name: "Hoplite Technical Interview Prep"
+  visual_elements:
+    - "Large banner with club logo and 'Technical Interview Practice' headline"
+    - "QR codes linking to slide catalog and Git cheat sheet"
+    - "Sample technical problems displayed on easel"
+    - "Success stories from club alumni"
+
+  staffing_rotation:
+    - "16:30-17:15: Senior CS students + 1 Career Center staff"
+    - "17:15-18:00: Graduate students + Alumni volunteers"
+
+services_offered:
+  technical_interview_practice:
+    description: "15-minute mock interviews with immediate feedback"
+    process:
+      - "Student selects difficulty level: Easy, Medium, or Hard"
+      - "Practice problem solving with think-aloud approach"
+      - "Receive specific feedback on communication and approach"
+      - "Get recommendations for continued practice"
+
+  portfolio_review:
+    description: "GitHub and project portfolio evaluation"
+    focus_areas:
+      - "README file quality and project explanation"
+      - "Code organization and documentation standards"
+      - "Technology stack diversity and relevance"
+      - "Deployment and demo accessibility"
+
+  resume_critique:
+    description: "One-page resume review with specific suggestions"
+    evaluation_criteria:
+      - "XYZ bullet format implementation"
+      - "Technical skills section organization"
+      - "Project descriptions and impact quantification"
+      - "Education and experience balance"
+
+  mentorship_matchmaking:
+    description: "Connect underclassmen with senior students or alumni"
+    matching_criteria:
+      - "Similar career interests (web dev, mobile, data science, etc.)"
+      - "Company target alignment (startups vs big tech vs consulting)"
+      - "Timeline compatibility for ongoing check-ins"
+
+practice_prompts:
+  easy_level:
+    - "Two Sum (LC 1) - focus on explanation clarity"
+    - "Valid Parentheses (LC 20) - stack usage discussion"
+    - "Merge Two Sorted Lists (LC 21) - pointer manipulation"
+
+  medium_level:
+    - "Maximum Subarray (LC 53) - compare brute force vs optimal"
+    - "Longest Substring Without Repeating Characters (LC 3) - sliding window"
+    - "Binary Tree Level Order Traversal (LC 102) - BFS implementation"
+
+  hard_level:
+    - "Design system: URL shortener - architecture discussion"
+    - "Serialize and Deserialize Binary Tree (LC 297) - design choices"
+    - "Median of Two Sorted Arrays (LC 4) - binary search complexity"
+
+success_metrics:
+  - "At least 20 students receive technical interview practice"
+  - "15+ portfolio reviews completed with written feedback"
+  - "10+ mentorship connections established"
+  - "80% positive feedback on usefulness of experience"
+
+resources_distributed:
+  - title: "Technical Interview Checklist"
+    format: "QR code to GitHub repository"
+    description: "Comprehensive prep guide with common patterns"
+
+  - title: "Git Command Cheat Sheet"
+    format: "Physical handout + QR code"
+    description: "Essential commands for development workflow"
+
+  - title: "Workshop Slide Catalog"
+    format: "QR code to online catalog"
+    description: "Access to all 12 weeks of workshop materials"
+
+  - title: "Hoplite Alumni Network"
+    format: "LinkedIn group invitation"
+    description: "Ongoing networking with club graduates"
+
+preparation_tasks:
+  two_weeks_before:
+    - "Confirm volunteer availability and create staffing schedule"
+    - "Design and print table placard with QR codes"
+    - "Prepare portfolio review checklists and resume templates"
+    - "Create practice problem cards organized by difficulty"
+
+  one_week_before:
+    - "Brief all volunteers on feedback format and goals"
+    - "Test QR codes and ensure all linked resources are accessible"
+    - "Prepare sign-up sheets and contact information templates"
+
+  day_of_event:
+    - "Arrive 30 minutes early for table setup"
+    - "Organize materials and test any technology"
+    - "Brief volunteers on specific roles and rotation schedule"
+
+follow_up_process:
+  within_48_hours:
+    - "Send thank you emails to all volunteers"
+    - "Compile feedback forms and identify common improvement areas"
+    - "Connect students with matched mentors via email introduction"
+
+  within_one_week:
+    - "Share aggregate feedback with club leadership for program improvement"
+    - "Schedule follow-up mentorship meetings for interested pairs"
+    - "Post event photos and success stories to club social media"
+
+alumni_engagement:
+  target_participants:
+    - "SJSU CS graduates working in tech (last 3 years)"
+    - "Current graduate students with industry internship experience"
+    - "Career changers who successfully transitioned to tech roles"
+
+  recruitment_strategy:
+    - "LinkedIn outreach through club officer networks"
+    - "Email invitation through alumni association"
+    - "Personal invitations from faculty connections"

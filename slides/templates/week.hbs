@@ -1,0 +1,368 @@
+---
+marp: true
+theme: academic
+class:
+{{#if is_special_event}}  - special-event{{/if}}
+{{#if (eq delivery "virtual")}}  - virtual-event{{/if}}
+paginate: true
+---
+
+<!-- Title Slide -->
+<div class="title-slide">
+
+# {{title}}
+
+<div class="subtitle">
+Week {{week}} • {{#if date}}{{formatDate date}}{{else}}TBD{{/if}}
+</div>
+
+<div class="meta">
+{{#if time}}{{formatTime time}}{{/if}}{{#if location}} • {{location}}{{/if}}
+<br>SJSU Hoplite Club • SWE Interview Master Plan
+</div>
+
+</div>
+
+---
+
+<!-- Learning Objectives -->
+## 🎯 Learning Objectives
+
+By the end of this session, you will be able to:
+
+{{#each objectives}}
+- {{this}}
+{{/each}}
+
+{{#if prior_knowledge}}
+### Prerequisites
+{{#each prior_knowledge}}
+- {{this}}
+{{/each}}
+{{/if}}
+
+---
+
+<!-- Session Agenda -->
+<div class="agenda">
+
+## 📋 Session Agenda
+
+{{#each agenda}}
+<div class="agenda-item">
+  <div class="agenda-time">{{time}}</div>
+  <div class="agenda-activity">{{activity}}{{#if duration}} ({{duration}} min){{/if}}</div>
+</div>
+{{/each}}
+
+</div>
+
+{{#if schedule_notes}}
+<div class="tip">
+{{schedule_notes}}
+</div>
+{{/if}}
+
+---
+
+<!-- Key Concepts Overview -->
+## 🧠 Key Concepts
+
+{{#if (includes topics "Setup")}}
+<div class="tip">
+Today we're setting up the foundation for your interview success! Focus on getting comfortable with the tools and workflows.
+</div>
+{{/if}}
+
+{{#if (includes topics "DSA")}}
+<div class="two-column">
+<div class="column">
+
+### Core Data Structures & Algorithms
+{{#each topics}}
+- **{{this}}**: Essential patterns and techniques
+{{/each}}
+
+</div>
+<div class="column">
+
+### Problem-Solving Approach
+1. **Understand** the problem
+2. **Plan** your approach
+3. **Code** the solution
+4. **Test** and optimize
+
+</div>
+</div>
+{{else}}
+### Focus Areas
+{{#each topics}}
+- **{{this}}**
+{{/each}}
+{{/if}}
+
+---
+
+{{#if industry_tip}}
+<!-- Industry Relevance -->
+<div class="career">
+
+## 🚀 {{industry_tip.title}}
+
+{{#each industry_tip.bullets}}
+- {{this}}
+{{/each}}
+
+{{#if industry_tip.source}}
+*Source: {{industry_tip.source}}*
+{{/if}}
+
+</div>
+
+---
+{{/if}}
+
+<!-- Hands-On Activities -->
+## 🛠️ Hands-On Activities
+
+{{#each activities}}
+### {{@index}}: {{title}} ({{type}})
+
+{{#if (eq type "lab")}}
+<div class="command-sequence">
+{{#each steps}}
+{{this}}
+{{/each}}
+</div>
+{{else if (eq type "coding")}}
+**Coding Challenge:**
+{{#each steps}}
+{{@index}}. {{this}}
+{{/each}}
+{{else}}
+**Steps:**
+{{#each steps}}
+{{@index}}. {{this}}
+{{/each}}
+{{/if}}
+
+{{#if time_minutes}}
+⏱️ **Time allocated:** {{time_minutes}} minutes
+{{/if}}
+
+---
+{{/each}}
+
+{{#if (includes topics "Git")}}
+<!-- Git Command Reference - Inspired by Github 101 -->
+<div class="command-sequence">
+
+### Essential Git Commands
+
+```bash
+# Clone a repository
+git clone https://github.com/username/repo.git
+
+# Check status
+git status
+
+# Add changes
+git add .
+git add filename.txt
+
+# Commit with message
+git commit -m "Add feature X"
+
+# Push to remote
+git push origin main
+
+# Create and switch to new branch
+git checkout -b feature-branch
+
+# Merge branch (after PR approval)
+git checkout main
+git pull origin main
+```
+
+</div>
+
+---
+{{/if}}
+
+<!-- Assessment -->
+<div class="assessment-block">
+
+## 📊 Assessment & Practice
+
+{{#each assessment}}
+{{#if (eq type "leetcode")}}
+### LeetCode Problems
+{{#each ids}}
+<span class="leetcode-problem">{{this}}</span>
+{{/each}}
+
+**Instructions:** {{instructions}}
+
+<div class="tip">
+Time-box each problem to 25 minutes. Focus on explaining your approach clearly, even if you don't finish coding.
+</div>
+{{else if (eq type "project")}}
+### Project Assignment
+{{project_description}}
+{{else if (eq type "quiz")}}
+### Quick Check
+{{instructions}}
+{{else if (eq type "reflection")}}
+### Reflection Questions
+{{instructions}}
+{{/if}}
+{{/each}}
+
+</div>
+
+---
+
+<!-- Resources -->
+<div class="resources-block">
+
+## 📚 Resources & References
+
+### Core Resources
+{{#each resources.core}}
+- **[{{title}}]({{url}})** - {{why}}
+{{/each}}
+
+{{#if resources.enrichment}}
+### Additional Learning
+{{#each resources.enrichment}}
+- [{{title}}]({{url}})
+{{/each}}
+{{/if}}
+
+### Quick Links
+- [Algorithm Visualizer](https://algorithm-visualizer.org/) - Interactive algorithm animations
+- [MIT OCW 6.006](https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-006-introduction-to-algorithms-fall-2011/) - Introduction to Algorithms
+{{#if (includes topics "DSA")}}
+- [Big-O Cheat Sheet](https://www.bigocheatsheet.com/) - Time/space complexity reference
+{{/if}}
+
+</div>
+
+---
+
+{{#if (includes topics "Setup")}}
+<!-- DO/DON'T for Setup Week - Success With SCE Style -->
+<div class="two-column">
+
+<div class="do">
+**Set up a consistent development environment**
+- Use the same IDE/editor for all practice
+- Install essential extensions (linting, formatting)
+- Configure Git with your real name and email
+- Create a dedicated folder for interview prep
+</div>
+
+<div class="dont">
+**Don't jump around between tools**
+- Avoid switching IDEs mid-preparation
+- Don't skip version control setup
+- Don't use your work/personal email for practice repos
+- Don't overcomplicate your environment
+</div>
+
+</div>
+{{/if}}
+
+{{#if (includes topics "DSA")}}
+<!-- DO/DON'T for DSA - Success With SCE Style -->
+<div class="two-column">
+
+<div class="do">
+**Focus on problem-solving approach**
+- Explain your thinking out loud
+- Start with brute force, then optimize
+- Test your solution with examples
+- Practice coding by hand occasionally
+</div>
+
+<div class="dont">
+**Don't memorize solutions**
+- Avoid just copying code from discussions
+- Don't skip the explanation step
+- Don't ignore edge cases
+- Don't panic when stuck - think step by step
+</div>
+
+</div>
+{{/if}}
+
+---
+
+{{#if (gt week 0)}}
+<!-- Next Week Preview -->
+## 🔮 Coming Next Week
+
+{{#if (eq week 1)}}**Week 2: Sorting & Arrays**
+- Master merge sort and quicksort implementations
+- Array manipulation techniques and two-pointer patterns
+- Stability vs. in-place sorting trade-offs
+{{else if (eq week 2)}}**Week 3: Hash Tables & Sliding Window**
+- Hash table collision resolution strategies
+- Sliding window technique for substring problems
+- Time/space complexity analysis
+{{else if (eq week 3)}}**Week 4: Trees & Heaps**
+- Binary tree traversals and properties
+- Heap operations and priority queues
+- Balanced tree concepts
+{{else if (eq week 4)}}**Week 5: Industry Mixer** 🎉
+- Virtual networking and interview tips
+- Technical interview anxiety management
+- Breakout rooms with industry professionals
+{{else if (eq week 5)}}**Week 6: Graphs I - BFS/DFS & Union-Find**
+- Graph representation and traversal algorithms
+- Disjoint Set Union (DSU) data structure
+- Connected components and cycle detection
+{{else if (eq week 6)}}**Week 7: MST & Shortest Path**
+- Minimum spanning trees with Kruskal's algorithm
+- Dijkstra's shortest path with optimizations
+- Real-world applications in networks
+{{else if (eq week 7)}}**Week 8: Greedy vs Dynamic Programming**
+- When to choose greedy vs DP approaches
+- Classical DP patterns (knapsack, LCS, coin change)
+- Optimization techniques and space complexity
+{{else if (eq week 8)}}**Week 9: System Design Bootcamp**
+- Scalability fundamentals and trade-offs
+- URL shortener and rate limiting systems
+- Database partitioning and caching strategies
+{{else if (eq week 9)}}**Week 10: Cloud & Distributed Systems**
+- AWS Well-Architected Framework principles
+- Docker containerization and Kubernetes orchestration
+- Infrastructure as Code with Terraform
+{{else if (eq week 10)}}**Week 11: Senior Work Day** 🎓
+- Career prep table at Student Union
+- Portfolio reviews and technical interview practice
+- One-on-one guidance from senior members
+{{else if (eq week 11)}}**Week 12: DevOps & ML + Final Presentations**
+- CI/CD pipelines and deployment strategies
+- Machine Learning for software engineers
+- Final project presentations and wrap-up
+{{/if}}
+
+{{/if}}
+
+---
+
+<!-- Closing Slide -->
+<div class="title-slide">
+
+## Questions & Discussion
+
+**Slack:** #swe-interview-prep
+**Office Hours:** Wednesdays 3:00-4:00 PM
+**Next Session:** {{#if (lt week 12)}}Week {{add week 1}} • {{#if date}}{{addWeeks date 1}}{{else}}TBD{{/if}}{{else}}Final Presentations{{/if}}
+
+### Keep Practicing! 🚀
+
+*Remember: Consistency beats intensity. Practice a little every day.*
+
+</div>

@@ -1,0 +1,129 @@
+id: "week01-recursion"
+title: "Recursion & Master Theorem"
+week: 1
+duration: "90 minutes"
+
+objectives:
+  - "Analyze recursive algorithms using the Master Theorem for divide-and-conquer problems"
+  - "Implement recursive solutions with proper base cases and recurrence relations"
+  - "Build recursion trees to visualize time complexity analysis"
+  - "Apply recursive thinking to solve classic algorithmic problems"
+  - "Distinguish when recursion is preferable over iterative approaches"
+
+agenda:
+  - time: "16:00"
+    activity: "Quick review of Week 0 setup and Git workflows"
+    duration: 5
+  - time: "16:05"
+    activity: "Recursion fundamentals and mental model"
+    duration: 20
+  - time: "16:25"
+    activity: "Master Theorem derivation and cases"
+    duration: 15
+  - time: "16:40"
+    activity: "Recursion tree construction workshop"
+    duration: 20
+  - time: "17:00"
+    activity: "Coding practice: implementing recursive solutions"
+    duration: 25
+  - time: "17:25"
+    activity: "Complexity analysis and next week preview"
+    duration: 5
+
+topics:
+  - "DSA"
+  - "Recursion"
+
+prior_knowledge:
+  - "Function calls and stack behavior"
+  - "Basic understanding of Big O notation"
+  - "Familiarity with mathematical induction concept"
+
+activities:
+  - type: "demo"
+    title: "Recursion Tree Construction"
+    time_minutes: 20
+    steps:
+      - "Draw recursion tree for binary search T(n) = T(n/2) + O(1)"
+      - "Count nodes at each level and calculate total work"
+      - "Derive O(log n) complexity from tree structure"
+      - "Repeat for merge sort T(n) = 2T(n/2) + O(n)"
+      - "Show how tree depth and work per level determine overall complexity"
+  - type: "coding"
+    title: "Recursive Problem Solving"
+    time_minutes: 25
+    steps:
+      - "Implement factorial function with base case analysis"
+      - "Code Fibonacci sequence (naive recursive approach)"
+      - "Solve maximum subarray problem recursively (divide and conquer)"
+      - "Debug common recursion errors (missing base case, infinite recursion)"
+      - "Compare recursive vs iterative approaches for same problem"
+
+assessment:
+  - type: "leetcode"
+    ids: [53, 121, 344]
+    instructions: "Focus on recursive solutions. For LC 53 (Maximum Subarray), implement the divide-and-conquer approach rather than Kadane's algorithm. Explain time complexity using Master Theorem."
+  - type: "quiz"
+    instructions: "Given recurrence T(n) = 3T(n/4) + O(n²), identify which Master Theorem case applies and derive the final complexity."
+
+resources:
+  core:
+    - title: "Algorithm Visualizer - Recursion"
+      url: "https://algorithm-visualizer.org/category/recursion"
+      why: "Interactive visualization of recursive call stacks and problem decomposition"
+    - title: "MIT OCW 6.006 - Divide and Conquer"
+      url: "https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-006-introduction-to-algorithms-fall-2011/lecture-videos/lecture-3-insertion-sort-merge-sort/"
+      why: "Rigorous mathematical treatment of divide-and-conquer analysis"
+    - title: "Master Theorem Reference"
+      url: "https://en.wikipedia.org/wiki/Master_theorem_(analysis_of_algorithms)"
+      why: "Complete reference for all Master Theorem cases with examples"
+  enrichment:
+    - title: "Recursion Patterns in Interviews"
+      url: "https://leetcode.com/explore/learn/card/recursion-i/"
+    - title: "CLRS Chapter 4 - Divide and Conquer"
+      url: "https://mitpress.mit.edu/books/introduction-algorithms-third-edition"
+
+speaker_notes:
+  beats:
+    - "Begin with intuitive recursion example (Russian dolls, mirrors) before diving into technical details"
+    - "Emphasize that recursion is problem decomposition - break big problems into smaller identical subproblems"
+    - "When teaching Master Theorem, focus on the three cases but don't get bogged down in proof details"
+    - "During tree construction, draw slowly and explain each level - this is where understanding clicks"
+    - "For coding practice, start with simple examples and build complexity gradually"
+    - "Address stack overflow concerns and when to prefer iterative solutions"
+  time_cues:
+    - minute: 20
+      note: "Should be starting Master Theorem - ensure everyone understands basic recursion concept first"
+    - minute: 35
+      note: "Begin hands-on tree construction - this is the most important concept to master"
+    - minute: 55
+      note: "Transition to coding practice - students should be actively implementing solutions"
+  demo_steps:
+    - "Start with factorial: f(n) = n * f(n-1), base case f(0) = 1"
+    - "Draw call stack visualization showing function calls building up then resolving"
+    - "Show binary search tree: at each level, problem size halves"
+    - "Demonstrate merge sort tree: show how subproblems combine back into solution"
+    - "Walk through Master Theorem application step by step"
+  faq:
+    - question: "When should I use recursion vs iteration?"
+      answer: "Use recursion when the problem naturally decomposes into smaller subproblems (trees, graphs, divide-and-conquer). Use iteration for simple repetitive tasks to avoid function call overhead."
+    - question: "How do I avoid stack overflow in recursive solutions?"
+      answer: "1) Ensure base cases are correct and reachable, 2) Consider iterative approaches for problems with deep recursion, 3) Use memoization or dynamic programming for overlapping subproblems."
+    - question: "Is the Master Theorem the only way to analyze recursive algorithms?"
+      answer: "No - it only applies to divide-and-conquer recurrences. For other patterns, use recursion trees, substitution method, or generating functions."
+
+industry_tip:
+  title: "Quality Over Quantity in Interview Practice"
+  bullets:
+    - "Solve 50-100 problems deeply rather than 500 problems superficially"
+    - "Practice explaining your approach out loud - communication matters as much as coding"
+    - "Time yourself but don't stress about speed initially - correctness and clarity first"
+    - "Keep a problem journal noting patterns and techniques that repeatedly appear"
+    - "Join hackathons to practice under pressure and build portfolio projects"
+  source: "Success With SCE slides p.8-10"
+
+style:
+  theme: "academic"
+  layout: "single-column"
+  callouts: ["tip", "caution", "career"]
+  slide_count_target: 25

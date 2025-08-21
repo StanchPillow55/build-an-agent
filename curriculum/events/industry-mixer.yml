@@ -1,0 +1,123 @@
+# Industry Mixer Event - Week 5
+# Virtual networking and technical interview preparation
+
+id: "industry-mixer"
+title: "All About Interviewing - Industry Mixer"
+event_type: "virtual_mixer"
+week: 5
+date: "2025-10-02"
+time: "16:00-17:30"
+location: "Virtual - Hoplite Zoom Room"
+duration: "90 minutes"
+
+facilitators:
+  - "Hoplite Club Officers"
+  - "Industry Guest Professionals"
+  - "SJSU Career Center Representatives"
+
+objectives:
+  - "Build confidence in technical interview communication"
+  - "Network with industry professionals and learn diverse career paths"
+  - "Practice anxiety management techniques for high-pressure situations"
+  - "Create personalized 1-minute technical introduction template"
+
+materials_needed:
+  - "Breakout room setup with 4-5 rooms of 6-8 people each"
+  - "Interview tips micro-deck (10 slides maximum)"
+  - "Anxiety management handout with breathing exercises"
+  - "QR codes linking to continued practice resources"
+  - "Industry guest contact information for follow-up"
+
+agenda:
+  - time: "16:00"
+    activity: "Virtual room welcome and networking icebreaker"
+    duration: 5
+    facilitator: "Hoplite Officers"
+  - time: "16:05"
+    activity: "Technical Interview Fundamentals (micro-presentation)"
+    duration: 15
+    facilitator: "Lead Officer"
+  - time: "16:20"
+    activity: "Anxiety management techniques and confidence building"
+    duration: 10
+    facilitator: "Career Center"
+  - time: "16:30"
+    activity: "1-minute technical introduction crafting and practice"
+    duration: 15
+    facilitator: "All"
+  - time: "16:45"
+    activity: "Breakout rooms: Mock interview scenarios with peer feedback"
+    duration: 30
+    facilitator: "Industry Guests + Officers"
+  - time: "17:15"
+    activity: "Industry professional Q&A panel"
+    duration: 10
+    facilitator: "Industry Guests"
+  - time: "17:25"
+    activity: "Follow-up commitments and resource sharing"
+    duration: 5
+    facilitator: "Hoplite Officers"
+
+breakout_activities:
+  - title: "Mock Technical Interview Practice"
+    description: "Pairs take turns as interviewer/interviewee using easy-medium problems from previous weeks"
+    time_allocation: "15 minutes per role swap"
+    focus_areas:
+      - "Clear problem explanation and approach articulation"
+      - "Asking clarifying questions before coding"
+      - "Think-aloud problem solving process"
+      - "Constructive feedback on communication style"
+
+  - title: "Behavioral Question Practice"
+    description: "Common non-technical questions with STAR method practice"
+    sample_questions:
+      - "Tell me about a challenging technical project you worked on"
+      - "Describe a time you had to learn a new technology quickly"
+      - "How do you handle disagreement with a team member?"
+
+industry_guests:
+  target_backgrounds:
+    - "Recent SJSU CS graduates (2-3 years experience)"
+    - "Mid-level engineers from diverse companies (startups, big tech, consulting)"
+    - "Technical recruiters who can speak to hiring processes"
+    - "Non-traditional path engineers (bootcamp, career changers)"
+
+resources_to_share:
+  - title: "Hoplite Interview Prep Breakout Room"
+    url: "https://sjsu.zoom.us/j/hoplite-interview-prep"
+    description: "Ongoing peer practice sessions throughout the semester"
+
+  - title: "Technical Interview Question Bank"
+    url: "https://github.com/hoplite-sjsu/interview-prep"
+    description: "Curated problems organized by difficulty and topic"
+
+  - title: "Industry Guest LinkedIn Contacts"
+    description: "Contact information shared with permission for networking follow-up"
+
+success_metrics:
+  - "80% of participants complete 1-minute introduction practice"
+  - "All breakout rooms have active participation with feedback exchange"
+  - "At least 3 industry professionals available for Q&A panel"
+  - "Post-event survey shows increased confidence in technical interviewing"
+
+follow_up_actions:
+  - "Share recording of industry Q&A panel for those who missed it"
+  - "Schedule additional practice sessions in Hoplite breakout room"
+  - "Connect interested students with industry guests via LinkedIn"
+  - "Provide additional resources based on questions raised during event"
+
+preparation_checklist:
+  one_week_before:
+    - "Confirm industry guest attendance and brief them on format"
+    - "Set up Zoom breakout rooms and test functionality"
+    - "Prepare interview tips micro-deck slides"
+
+  day_of_event:
+    - "Send Zoom links and instructions to all participants"
+    - "Prepare breakout room assignments for balanced groups"
+    - "Have backup technical problems ready in case of time constraints"
+
+  post_event:
+    - "Send thank you messages to industry guests"
+    - "Gather feedback via short survey"
+    - "Schedule follow-up sessions based on interest"

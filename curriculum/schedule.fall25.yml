@@ -1,0 +1,151 @@
+# Fall 2025 12-Week SWE Interview Master Plan Schedule
+# SJSU Hoplite Club - Regular workshops on Thursdays 4:00-5:30 PM
+
+semester: "Fall 2025"
+default_time: "16:00-17:30"  # 4:00-5:30 PM
+default_location: "SJSU Engineering Building"
+default_delivery: "in-person"
+
+schedule:
+  week00:
+    date: "2025-08-28"
+    title: "Setup & Baseline Assessment"
+    time: "16:00-17:30"
+    location: "Engineering 294"
+    delivery: "in-person"
+    notes: "Kickoff session - IDE setup, Git flow, baseline skills"
+
+  week01:
+    date: "2025-09-04"
+    title: "Recursion & Master Theorem"
+    time: "16:00-17:30"
+    location: "Engineering 294"
+    delivery: "in-person"
+    notes: "Labor Day week - confirm attendance"
+
+  week02:
+    date: "2025-09-11"
+    title: "Sorting & Arrays"
+    time: "16:00-17:30"
+    location: "Engineering 294"
+    delivery: "in-person"
+
+  week03:
+    date: "2025-09-18"
+    title: "Hash Tables & Sliding Window"
+    time: "16:00-17:30"
+    location: "Engineering 294"
+    delivery: "in-person"
+
+  week04:
+    date: "2025-09-25"
+    title: "Trees & Heaps"
+    time: "16:00-17:30"
+    location: "Engineering 294"
+    delivery: "in-person"
+    notes: "Intro meeting IDE/GIT fundamentals recap"
+
+  week05:
+    date: "2025-10-02"
+    title: "Industry Mixer - All About Interviewing"
+    time: "16:00-17:30"
+    location: "Virtual - Hoplite Zoom"
+    delivery: "virtual"
+    type: "special-event"
+    description: "Technical interviewing tips, anxiety management, breakout rooms"
+    breakout_room: "Hoplite Interview Prep"
+
+  week06:
+    date: "2025-10-09"
+    title: "Graphs I - BFS/DFS & Union-Find"
+    time: "16:00-17:30"
+    location: "Engineering 294"
+    delivery: "in-person"
+
+  week07:
+    date: "2025-10-16"
+    title: "MST & Shortest Path"
+    time: "16:00-17:30"
+    location: "Engineering 294"
+    delivery: "in-person"
+
+  week08:
+    date: "2025-10-23"
+    title: "Greedy vs Dynamic Programming"
+    time: "16:00-17:30"
+    location: "Engineering 294"
+    delivery: "in-person"
+    notes: "Graphs speaker event"
+
+  week09:
+    date: "2025-10-30"
+    title: "System Design Bootcamp"
+    time: "16:00-17:30"
+    location: "Engineering 294"
+    delivery: "in-person"
+    notes: "Halloween week - URL shortener + rate limiting"
+
+  week10:
+    date: "2025-11-06"
+    title: "Cloud & Distributed Systems"
+    time: "16:00-17:30"
+    location: "Engineering 294"
+    delivery: "in-person"
+
+  week11:
+    date: "2025-11-12"
+    title: "Get Your Career in Gear - Senior Work Day"
+    time: "16:30-18:00"
+    location: "Student Union Room 3"
+    delivery: "in-person"
+    type: "special-event"
+    description: "Career prep table, technical interview practice, portfolio review"
+    table: "Hoplite Technical Prep"
+    duration: "90 minutes"
+    notes: "Wednesday timing - Veterans Day week"
+
+  week12:
+    date: "2025-11-20"
+    title: "DevOps & ML for SWE + Wrap-up"
+    time: "16:00-17:30"
+    location: "Engineering 294"
+    delivery: "in-person"
+    notes: "Thanksgiving week - final presentations, portfolio reviews"
+
+# Special events metadata
+special_events:
+  industry_mixer:
+    week: 5
+    type: "virtual_mixer"
+    facilitators: ["Hoplite Officers", "Industry Guests"]
+    materials_needed:
+      - "Breakout room setup"
+      - "Interview tips micro-deck"
+      - "Anxiety management slides"
+
+  senior_work_day:
+    week: 11
+    type: "career_fair_table"
+    facilitators: ["Hoplite Senior Members", "Career Center"]
+    materials_needed:
+      - "Table placard PDF"
+      - "Portfolio review checklist"
+      - "Technical interview practice prompts"
+      - "QR codes for resources"
+
+# Academic calendar constraints
+constraints:
+  labor_day: "2025-09-01"  # Monday
+  veterans_day: "2025-11-11"  # Tuesday
+  thanksgiving_week: "2025-11-24"  # Thursday
+  finals_week_start: "2025-12-08"
+  semester_end: "2025-12-15"
+
+# Contact and logistics
+logistics:
+  club_email: "hoplite@sjsu.edu"
+  zoom_room: "https://sjsu.zoom.us/j/hoplite-prep"
+  slack_channel: "#swe-interview-prep"
+  attendance_target: 25
+  room_capacity: 40
+  backup_room: "Engineering 285"

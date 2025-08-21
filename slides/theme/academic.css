@@ -1,0 +1,354 @@
+/* Academic Theme for Marp - SJSU Hoplite Club */
+/* Inspired by Success With SCE and Github 101 presentations */
+
+@import 'default';
+
+:root {
+  /* SJSU Brand Colors */
+  --color-primary: #0055A2;     /* SJSU Blue */
+  --color-secondary: #FFB81C;   /* SJSU Gold */
+  --color-accent: #8CC8FF;      /* Light Blue */
+  --color-success: #28A745;
+  --color-warning: #FFC107;
+  --color-danger: #DC3545;
+
+  /* Neutral palette */
+  --color-background: #FFFFFF;
+  --color-foreground: #2C3E50;
+  --color-muted: #6C757D;
+  --color-light-gray: #F8F9FA;
+  --color-medium-gray: #E9ECEF;
+  --color-dark-gray: #495057;
+
+  /* Typography */
+  --font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  --font-family-mono: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
+  --font-size-base: 28px;
+  --font-size-large: 36px;
+  --font-size-small: 22px;
+  --line-height: 1.6;
+
+  /* Spacing */
+  --space-unit: 1rem;
+  --space-xs: calc(var(--space-unit) * 0.25);
+  --space-sm: calc(var(--space-unit) * 0.5);
+  --space-md: calc(var(--space-unit) * 1);
+  --space-lg: calc(var(--space-unit) * 2);
+  --space-xl: calc(var(--space-unit) * 3);
+}
+
+/* Base styles */
+section {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height);
+  padding: var(--space-xl);
+}
+
+/* Typography hierarchy */
+h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin: var(--space-lg) 0;
+  border-bottom: 4px solid var(--color-secondary);
+  padding-bottom: var(--space-sm);
+}
+
+h2 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin: var(--space-lg) 0 var(--space-md) 0;
+}
+
+h3 {
+  font-size: 2rem;
+  font-weight: 500;
+  color: var(--color-dark-gray);
+  margin: var(--space-md) 0;
+}
+
+h4 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--color-muted);
+  margin: var(--space-md) 0 var(--space-sm) 0;
+}
+
+/* Lists - emulating Success With SCE clean bullets */
+ul {
+  margin: var(--space-md) 0;
+  padding-left: var(--space-lg);
+}
+
+li {
+  margin: var(--space-sm) 0;
+  font-size: var(--font-size-base);
+}
+
+ul li::marker {
+  color: var(--color-primary);
+  content: "▸ ";
+}
+
+ol li {
+  margin: var(--space-sm) 0;
+}
+
+/* Code and tech content */
+code {
+  background: var(--color-light-gray);
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+  font-family: var(--font-family-mono);
+  font-size: 0.9em;
+  color: var(--color-danger);
+}
+
+pre {
+  background: var(--color-light-gray);
+  padding: var(--space-md);
+  border-radius: 8px;
+  border-left: 4px solid var(--color-primary);
+  margin: var(--space-md) 0;
+  overflow-x: auto;
+}
+
+pre code {
+  background: none;
+  padding: 0;
+  color: var(--color-foreground);
+  font-size: 0.8em;
+}
+
+/* Callout boxes - mimicking Success With SCE DO/DON'T style */
+.do, .dont, .tip, .caution, .career, .industry {
+  padding: var(--space-md);
+  margin: var(--space-md) 0;
+  border-radius: 8px;
+  border-left: 6px solid;
+  font-weight: 500;
+}
+
+.do {
+  background: #D4F9D7;
+  border-left-color: var(--color-success);
+}
+
+.do::before {
+  content: "✅ DO: ";
+  color: var(--color-success);
+  font-weight: 700;
+}
+
+.dont {
+  background: #FFE6E6;
+  border-left-color: var(--color-danger);
+}
+
+.dont::before {
+  content: "❌ DON'T: ";
+  color: var(--color-danger);
+  font-weight: 700;
+}
+
+.tip {
+  background: #E7F3FF;
+  border-left-color: var(--color-primary);
+}
+
+.tip::before {
+  content: "💡 TIP: ";
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+.caution {
+  background: #FFF8E1;
+  border-left-color: var(--color-warning);
+}
+
+.caution::before {
+  content: "⚠️ CAUTION: ";
+  color: var(--color-warning);
+  font-weight: 700;
+}
+
+.career {
+  background: #F3E5F5;
+  border-left-color: #9C27B0;
+}
+
+.career::before {
+  content: "🚀 CAREER: ";
+  color: #9C27B0;
+  font-weight: 700;
+}
+
+.industry {
+  background: #E8F5E8;
+  border-left-color: #4CAF50;
+}
+
+.industry::before {
+  content: "🏢 INDUSTRY: ";
+  color: #4CAF50;
+  font-weight: 700;
+}
+
+/* Command sequences - inspired by Github 101 terminal blocks */
+.command-sequence {
+  background: #1E1E1E;
+  color: #F8F8F2;
+  padding: var(--space-md);
+  border-radius: 8px;
+  font-family: var(--font-family-mono);
+  margin: var(--space-md) 0;
+  border-left: 4px solid var(--color-secondary);
+}
+
+.command-sequence::before {
+  content: "$ Terminal Commands";
+  display: block;
+  color: var(--color-secondary);
+  font-weight: 700;
+  margin-bottom: var(--space-sm);
+  font-family: var(--font-family);
+  font-size: 0.9em;
+}
+
+/* Two-column layout */
+.two-column {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-lg);
+  align-items: start;
+}
+
+.column {
+  padding: var(--space-sm);
+}
+
+/* Special slide types */
+.title-slide {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.title-slide h1 {
+  font-size: 4rem;
+  margin-bottom: var(--space-md);
+  border-bottom: none;
+}
+
+.title-slide .subtitle {
+  font-size: 1.5rem;
+  color: var(--color-muted);
+  margin-bottom: var(--space-xl);
+}
+
+.title-slide .meta {
+  font-size: 1.2rem;
+  color: var(--color-muted);
+}
+
+/* Agenda and schedule styling */
+.agenda {
+  background: var(--color-light-gray);
+  padding: var(--space-md);
+  border-radius: 8px;
+  margin: var(--space-md) 0;
+}
+
+.agenda h3 {
+  margin-top: 0;
+  color: var(--color-primary);
+}
+
+.agenda-item {
+  display: flex;
+  justify-content: space-between;
+  padding: var(--space-xs) 0;
+  border-bottom: 1px solid var(--color-medium-gray);
+}
+
+.agenda-time {
+  font-weight: 600;
+  color: var(--color-primary);
+  min-width: 80px;
+}
+
+.agenda-activity {
+  flex: 1;
+  margin-left: var(--space-md);
+}
+
+/* Assessment and resource blocks */
+.assessment-block, .resources-block {
+  background: var(--color-light-gray);
+  padding: var(--space-md);
+  margin: var(--space-md) 0;
+  border-radius: 8px;
+  border-left: 4px solid var(--color-primary);
+}
+
+.leetcode-problem {
+  display: inline-block;
+  background: var(--color-primary);
+  color: white;
+  padding: 0.2em 0.6em;
+  border-radius: 16px;
+  font-size: 0.8em;
+  font-weight: 600;
+  margin: 0.2em;
+}
+
+/* Special event styling */
+.special-event {
+  border: 3px solid var(--color-secondary);
+  background: linear-gradient(135deg, #FFF8E1 0%, #FFFFFF 100%);
+}
+
+.special-event h1 {
+  color: #F57C00;
+}
+
+/* Industry mixer specific */
+.virtual-event {
+  background: linear-gradient(135deg, #E3F2FD 0%, #FFFFFF 100%);
+  border: 3px solid var(--color-accent);
+}
+
+/* Footer for all slides */
+section::after {
+  content: "SJSU Hoplite Club • SWE Interview Master Plan • Fall 2025";
+  position: absolute;
+  bottom: 20px;
+  right: 30px;
+  font-size: 0.7em;
+  color: var(--color-muted);
+  font-style: italic;
+}
+
+/* Hide footer on title slides */
+.title-slide::after {
+  display: none;
+}
+
+/* Print/PDF optimizations */
+@media print {
+  section {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .do, .dont, .tip, .caution, .career, .industry {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+}

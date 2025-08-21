@@ -1,0 +1,83 @@
+id: "week12-devops-ml"
+title: "DevOps & ML for SWE + Wrap-up"
+week: 12
+duration: "90 minutes"
+
+objectives:
+  - "TBD: Add 4-5 learning objectives using action verbs"
+  - "TBD: Focus on measurable outcomes"
+  - "TBD: Connect to interview readiness"
+
+agenda:
+  - time: "16:00"
+    activity: "Review and warm-up"
+    duration: 10
+  - time: "16:10"
+    activity: "Core concept introduction"
+    duration: 20
+  - time: "16:30"
+    activity: "Hands-on workshop"
+    duration: 30
+  - time: "17:00"
+    activity: "Problem solving practice"
+    duration: 20
+  - time: "17:20"
+    activity: "Assessment and wrap-up"
+    duration: 10
+
+topics:
+  - "DevOps"
+  - "ML"
+
+prior_knowledge:
+  - "TBD: List 2-3 prerequisite concepts"
+
+activities:
+  - type: "demo"
+    title: "TBD: Main concept demonstration"
+    time_minutes: 20
+    steps:
+      - "TBD: Step 1"
+      - "TBD: Step 2"
+      - "TBD: Step 3"
+  - type: "coding"
+    title: "TBD: Hands-on coding practice"
+    time_minutes: 30
+    steps:
+      - "TBD: Practice problem 1"
+      - "TBD: Practice problem 2"
+      - "TBD: Implementation exercise"
+
+assessment:
+  - type: "project"
+    project_description: "TBD: Week-appropriate project or assessment"
+
+resources:
+  core:
+    - title: "Algorithm Visualizer"
+      url: "https://algorithm-visualizer.org/"
+      why: "Interactive visualization for this week's concepts"
+    - title: "TBD: Add 2-3 core resources"
+      url: "https://example.com"
+      why: "TBD: Explain relevance"
+  enrichment:
+    - title: "MIT OCW 6.006"
+      url: "https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-006-introduction-to-algorithms-fall-2011/"
+
+speaker_notes:
+  beats:
+    - "TBD: Key talking points for this session"
+    - "TBD: Common student questions and how to address them"
+    - "TBD: Connections to previous weeks and interview relevance"
+
+industry_tip:
+  title: "TBD: Career-relevant insight for this week"
+  bullets:
+    - "TBD: Practical advice from Success With SCE themes"
+  source: "Success With SCE slides"
+
+style:
+  theme: "academic"
+  layout: "single-column"
+  callouts: ["tip", "career"]
+  slide_count_target: 25

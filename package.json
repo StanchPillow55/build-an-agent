@@ -1,0 +1,42 @@
+{
+  "name": "swe-workshop-slides",
+  "version": "1.0.0",
+  "description": "12-Week SWE Interview Master Plan Workshop Slides Generator",
+  "scripts": {
+    "install-deps": "npm install && pip install -r requirements.txt",
+    "validate:sessions": "node scripts/validate.js",
+    "build:slides": "node scripts/build-slides.js",
+    "serve:slides": "reveal-md slides/week01.md -w",
+    "export:pdf": "node scripts/export-pdf.js",
+    "make": "npm run validate:sessions && npm run build:slides && npm run export:pdf && node scripts/build-catalog.js",
+    "clean": "rm -rf dist/* && mkdir -p dist/{pdf,html}",
+    "dev": "npm run build:slides && npm run serve:slides"
+  },
+  "devDependencies": {
+    "@marp-team/marp-cli": "^4.2.3",
+    "ajv": "^8.12.0",
+    "fs-extra": "^11.2.0",
+    "gray-matter": "^4.0.3",
+    "handlebars": "^4.7.8",
+    "markdown-it": "^14.0.0",
+    "yaml": "^2.3.4"
+  },
+  "dependencies": {
+    "ajv-formats": "^2.1.1",
+    "chalk": "^4.1.2",
+    "commander": "^11.1.0"
+  },
+  "engines": {
+    "node": ">=20 <24"
+  },
+  "keywords": [
+    "slides",
+    "education",
+    "swe",
+    "interview-prep",
+    "reveal.js",
+    "marp"
+  ],
+  "author": "SJSU Hoplite Club",
+  "license": "MIT"
+}
