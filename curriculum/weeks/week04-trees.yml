@@ -1,84 +1,83 @@
 id: "week04-trees"
-title: "Trees & Heaps"
+title: "Balanced Trees & Heaps"
 week: 4
 duration: "90 minutes"
-
+topics: ["DSA","Trees"]
 objectives:
-  - "TBD: Add 4-5 learning objectives using action verbs"
-  - "TBD: Focus on measurable outcomes"
-  - "TBD: Connect to interview readiness"
-
+  - "Implement RB-tree rotations and fix-up to restore red/black properties."
+  - "Build a binary heap and compute median of a stream with two heaps."
+  - "Compare balancing strategies (AVL, RB) and evaluate trade-offs."
 agenda:
   - time: "16:00"
-    activity: "Review and warm-up"
+    activity: "Warm-up: BST vs balanced BST"
     duration: 10
   - time: "16:10"
-    activity: "Core concept introduction"
+    activity: "RB-tree invariants & rotations"
     duration: 20
   - time: "16:30"
-    activity: "Hands-on workshop"
-    duration: 30
-  - time: "17:00"
-    activity: "Problem solving practice"
+    activity: "Lab: CLI visualizer + heaps"
+    duration: 25
+  - time: "16:55"
+    activity: "Drill: median stream"
     duration: 20
-  - time: "17:20"
-    activity: "Assessment and wrap-up"
-    duration: 10
-
-topics:
-  - "DSA"
-  - "Trees"
-
-prior_knowledge:
-  - "TBD: List 2-3 prerequisite concepts"
-
-activities:
-  - type: "demo"
-    title: "TBD: Main concept demonstration"
-    time_minutes: 20
-    steps:
-      - "TBD: Step 1"
-      - "TBD: Step 2"
-      - "TBD: Step 3"
-  - type: "coding"
-    title: "TBD: Hands-on coding practice"
-    time_minutes: 30
-    steps:
-      - "TBD: Practice problem 1"
-      - "TBD: Practice problem 2"
-      - "TBD: Implementation exercise"
-
-assessment:
-  - type: "leetcode"
-    ids: [104, 295, 23]
-    instructions: "TBD: Specific instructions for the week's focus"
-
+  - time: "17:15"
+    activity: "Wrap up session"
+    duration: 5
 resources:
   core:
-    - title: "Algorithm Visualizer"
+    - title: "MIT OCW 6.006 — Balanced BSTs & Heaps"
+      url: "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-fall-2011/"
+      why: "Grounding theory with practical operations and complexity."
+    - title: "Algorithm Visualizer — Heaps"
       url: "https://algorithm-visualizer.org/"
-      why: "Interactive visualization for this week's concepts"
-    - title: "TBD: Add 2-3 core resources"
-      url: "https://example.com"
-      why: "TBD: Explain relevance"
+      why: "See heapify and sift-up/down dynamics."
+    - title: "Tech Interview Handbook — Trees"
+      url: "https://www.techinterviewhandbook.org/algorithms/trees/"
+      why: "Interview cues and common invariants to state."
   enrichment:
-    - title: "MIT OCW 6.006"
-      url: "https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-006-introduction-to-algorithms-fall-2011/"
-
-speaker_notes:
-  beats:
-    - "TBD: Key talking points for this session"
-    - "TBD: Common student questions and how to address them"
-    - "TBD: Connections to previous weeks and interview relevance"
-
-industry_tip:
-  title: "TBD: Career-relevant insight for this week"
-  bullets:
-    - "TBD: Practical advice from Success With SCE themes"
-  source: "Success With SCE slides"
-
+    - title: "CLRS — Red-Black Trees"
+      url: "https://mitpress.mit.edu/9780262046305/introduction-to-algorithms/"
+      why: "Formal proofs and insertion/deletion cases."
+prior_knowledge:
+  - "Describe binary search tree properties and traversal orders."
+  - "Trace pointer manipulations and recursive insert/delete."
+activities:
+  - type: "lab"
+    title: "RB-tree rotation visualizer"
+    time_minutes: 25
+    steps:
+      - "Implement left/right rotation functions."
+      - "Animate insertions and call fix-up to restore invariants."
+      - "Log color flips and rotations; verify black-height consistency."
+      - "Add min-heap and max-heap; compute streaming median."
+assessment:
+  - type: "leetcode"
+    ids: [98, 230]
+    instructions: "For LC 98, state the invariant (BST via in-order monotonicity or bounds). For LC 230, compare inorder vs heap approaches and justify time/space trade-offs."
 style:
   theme: "academic"
-  layout: "single-column"
-  callouts: ["tip", "career"]
-  slide_count_target: 25
+  layout: "two-column"
+  callouts: ["do-dont", "tip"]
+  slide_count_target: 22
+speaker_notes:
+  beats:
+    - "BSTs degrade without balancing; invariants prevent skew."
+    - "RB-tree fix-up patterns: recolor vs rotate."
+    - "Median of stream: two heaps maintain balance."
+    - "Interview: narrate invariants and rotation effects."
+    - "Trade-offs: AVL stricter balance vs RB fewer rotations."
+  time_cues:
+    - minute: 10
+      note: "draw RB cases."
+    - minute: 30
+      note: "begin visualizer; show a rotation log."
+    - minute: 65
+      note: "switch to heap median drill."
+  demo_steps:
+    - "Insert a key causing a red-red violation; fix it."
+    - "Show heap push/pop and median update."
+  faq:
+    - question: "Why RB over AVL in libraries?"
+      answer: "Fewer rotations on updates; better constants in many workloads."
+    - question: "Is heap median always O(log n)?"
+      answer: "Yes per insert; O(1) to read median with two heaps."

@@ -203,18 +203,18 @@ for filename in curriculum_files:
     try:
         with open(filename, 'r') as f:
             curriculum = json.load(f)
-        
+
         # Apply sanitization
         clean_curriculum = enforce_constraints(curriculum)
-        
+
         # Save sanitized version
         clean_filename = f"sanitized_{filename}"
         with open(clean_filename, 'w') as f:
             json.dump(clean_curriculum, f, indent=2)
-        
+
         sanitized_curricula[filename] = clean_curriculum
         print(f"✅ Sanitized {filename} -> {clean_filename}")
-        
+
     except Exception as e:
         print(f"❌ Error processing {filename}: {e}")
 
@@ -293,19 +293,19 @@ test_cases = [
 
 for i, test in enumerate(test_cases):
     cleaned = clean_text(test["input"])
-    
+
     # Check positive conditions
     for should_contain in test["should_contain"]:
         if should_contain not in cleaned:
             print(f"❌ Test {i+1} failed: Missing '{should_contain}'")
             continue
-    
+
     # Check negative conditions
     for should_not_contain in test["should_not_contain"]:
         if should_not_contain in cleaned:
             print(f"❌ Test {i+1} failed: Contains '{should_not_contain}'")
             continue
-    
+
     print(f"✅ Test {i+1} passed")
 ```
 
@@ -316,16 +316,16 @@ Generate sanitization reports for compliance:
 ```python
 def generate_sanitization_report(original_curriculum, sanitized_curriculum):
     """Generate a report of what was sanitized."""
-    
+
     def count_redactions(text):
         return str(text).count("[REDACTED]")
-    
+
     def count_censoring(text):
         return str(text).count("*")
-    
+
     original_text = str(original_curriculum)
     sanitized_text = str(sanitized_curriculum)
-    
+
     report = {
         "timestamp": datetime.now().isoformat(),
         "original_length": len(original_text),
@@ -334,7 +334,7 @@ def generate_sanitization_report(original_curriculum, sanitized_curriculum):
         "profanity_censoring": count_censoring(sanitized_text),
         "sanitization_applied": count_redactions(sanitized_text) > 0 or count_censoring(sanitized_text) > 0
     }
-    
+
     return report
 
 # Usage
@@ -362,20 +362,20 @@ print(f"Content Safe: {'Yes' if not report['sanitization_applied'] else 'Sanitiz
 ```python
 def review_sanitization(original, sanitized):
     """Helper to review sanitization results."""
-    
+
     original_str = str(original)
     sanitized_str = str(sanitized)
-    
+
     # Check for over-sanitization
     redaction_ratio = sanitized_str.count("[REDACTED]") / len(original_str.split())
-    
+
     if redaction_ratio > 0.1:  # More than 10% of words redacted
         print("⚠️ High redaction ratio - review for over-sanitization")
-    
+
     # Check for broken sentences
     if "[REDACTED]'s" in sanitized_str or "[REDACTED] and [REDACTED]" in sanitized_str:
         print("⚠️ Potential grammar issues from redaction")
-    
+
     # Verify educational terms preserved
     educational_terms = ["students", "lesson", "curriculum", "assessment", "learning"]
     for term in educational_terms:
@@ -390,38 +390,38 @@ Generate curricula with built-in safety:
 ```python
 def generate_safe_curriculum(grade, subject, **kwargs):
     """Generate curriculum with enhanced safety constraints."""
-    
+
     # Add safety constraints
     safety_constraints = [
         "age-appropriate",
-        "privacy-protecting", 
+        "privacy-protecting",
         "PII-safe",
         "content-appropriate",
         "no-personal-examples"
     ]
-    
+
     existing_constraints = kwargs.get("constraints", [])
     kwargs["constraints"] = existing_constraints + safety_constraints
-    
+
     # Generate and sanitize
     params = {
         "grade_level": grade,
         "subject": subject,
         **kwargs
     }
-    
+
     curriculum = plan_curriculum(params)
     sanitized = enforce_constraints(curriculum)
-    
+
     # Validation
     if "[REDACTED]" in str(sanitized):
         print("ℹ️ Content was sanitized for safety")
-    
+
     return sanitized
 
 # Usage
 safe_curriculum = generate_safe_curriculum(
-    "8th Grade", 
+    "8th Grade",
     "Environmental Science",
     baseline="no prior knowledge",
     duration="45 minutes"

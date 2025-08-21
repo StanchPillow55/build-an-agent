@@ -1,83 +1,80 @@
-id: "week12-devops-ml"
-title: "DevOps & ML for SWE + Wrap-up"
+id: "week12-devops"
+title: "ML/AI for SWE — Small Models & Serving"
 week: 12
 duration: "90 minutes"
-
+topics: ["ML"]
 objectives:
-  - "TBD: Add 4-5 learning objectives using action verbs"
-  - "TBD: Focus on measurable outcomes"
-  - "TBD: Connect to interview readiness"
-
+  - "Implement a regression and a tree-based model and evaluate bias/variance."
+  - "Create a simple embedding-based search and explain cosine similarity."
+  - "Deploy a model behind a REST endpoint and measure latency."
 agenda:
   - time: "16:00"
-    activity: "Review and warm-up"
+    activity: "Warm-up: bias vs variance"
     duration: 10
   - time: "16:10"
-    activity: "Core concept introduction"
+    activity: "Models: regression & trees"
     duration: 20
   - time: "16:30"
-    activity: "Hands-on workshop"
-    duration: 30
-  - time: "17:00"
-    activity: "Problem solving practice"
+    activity: "Embeddings & search"
+    duration: 25
+  - time: "16:55"
+    activity: "Serving: REST endpoint"
     duration: 20
-  - time: "17:20"
-    activity: "Assessment and wrap-up"
-    duration: 10
-
-topics:
-  - "DevOps"
-  - "ML"
-
-prior_knowledge:
-  - "TBD: List 2-3 prerequisite concepts"
-
-activities:
-  - type: "demo"
-    title: "TBD: Main concept demonstration"
-    time_minutes: 20
-    steps:
-      - "TBD: Step 1"
-      - "TBD: Step 2"
-      - "TBD: Step 3"
-  - type: "coding"
-    title: "TBD: Hands-on coding practice"
-    time_minutes: 30
-    steps:
-      - "TBD: Practice problem 1"
-      - "TBD: Practice problem 2"
-      - "TBD: Implementation exercise"
-
-assessment:
-  - type: "project"
-    project_description: "TBD: Week-appropriate project or assessment"
-
+  - time: "17:15"
+    activity: "Wrap up session"
+    duration: 5
 resources:
   core:
-    - title: "Algorithm Visualizer"
-      url: "https://algorithm-visualizer.org/"
-      why: "Interactive visualization for this week's concepts"
-    - title: "TBD: Add 2-3 core resources"
-      url: "https://example.com"
-      why: "TBD: Explain relevance"
+    - title: "Scikit-learn — Getting Started"
+      url: "https://scikit-learn.org/stable/getting_started.html"
+      why: "Baseline models with consistent APIs for quick iteration."
+    - title: "FastAPI — First Steps"
+      url: "https://fastapi.tiangolo.com/tutorial/first-steps/"
+      why: "Lightweight serving stack for model endpoints."
+    - title: "Embeddings — Primer"
+      url: "https://developers.google.com/machine-learning/crash-course/embeddings/intro-to-embeddings"
+      why: "Conceptual grounding before coding."
   enrichment:
-    - title: "MIT OCW 6.006"
-      url: "https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-006-introduction-to-algorithms-fall-2011/"
-
-speaker_notes:
-  beats:
-    - "TBD: Key talking points for this session"
-    - "TBD: Common student questions and how to address them"
-    - "TBD: Connections to previous weeks and interview relevance"
-
-industry_tip:
-  title: "TBD: Career-relevant insight for this week"
-  bullets:
-    - "TBD: Practical advice from Success With SCE themes"
-  source: "Success With SCE slides"
-
+    - title: "Kaggle — Mini Competition"
+      url: "https://www.kaggle.com/competitions"
+      why: "Practice experimental rigor with a public dataset."
+prior_knowledge:
+  - "Use Python notebooks and virtual environments."
+  - "Explain train/validation/test splits."
+activities:
+  - type: "lab"
+    title: "Train → Embed → Serve"
+    time_minutes: 25
+    steps:
+      - "Train a regression and a small tree model; report metrics."
+      - "Compute embeddings for short texts; implement cosine similarity search."
+      - "Expose `/predict` and `/search` endpoints with FastAPI."
+      - "Load test with a small client; record median and p95 latency."
+assessment:
+  - type: "project"
+    instructions: "Submit a repo link with a notebook (metrics & plots), an API server with `/predict` and `/search`, and a short latency report with one optimization you tried."
 style:
   theme: "academic"
-  layout: "single-column"
-  callouts: ["tip", "career"]
-  slide_count_target: 25
+  layout: "two-column"
+  callouts: ["do-dont", "tip"]
+  slide_count_target: 22
+speaker_notes:
+  beats:
+    - "Bias/variance trade-off: show under/overfit curves."
+    - "Embeddings turn text into vectors; cosine captures semantic proximity."
+    - "Serving concerns: serialization, warm-up, concurrency."
+    - "Measure before optimizing; p95 tells the real story."
+  time_cues:
+    - minute: 10
+      note: "fit a tiny model live."
+    - minute: 30
+      note: "compute embeddings and run a demo query."
+    - minute: 55
+      note: "hit the REST endpoint with a client."
+  demo_steps:
+    - "Train and print metrics."
+    - "Show a nearest-neighbors search."
+    - "Spin up FastAPI; run a simple load test."
+  faq:
+    - question: "Is GPU required?"
+      answer: "No; we'll use CPU-friendly models to focus on engineering and evaluation."

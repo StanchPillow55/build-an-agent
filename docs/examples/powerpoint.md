@@ -18,8 +18,8 @@ python -m educator_agent \
 
 This creates a complete presentation with:
 - **Title slide** with lesson information
-- **Learning objectives slide** 
-- **Content slides** for each curriculum section  
+- **Learning objectives slide**
+- **Content slides** for each curriculum section
 - **Assessment slide** with suggested activities
 - **Automatically sourced images** for visual appeal
 
@@ -74,14 +74,14 @@ mkdir -p presentations
 
 for subject in "${subjects[@]}"; do
     echo "Generating presentation for $subject..."
-    
+
     python -m educator_agent \
         --grade "$grade" \
         --subject "$subject" \
         --constraints "age-appropriate,visual-learning,lab-activities" \
         --pptx "presentations/${subject,,}_${grade// /_}.pptx" \
         --quiet
-    
+
     echo "✅ $subject presentation complete"
 done
 
@@ -112,17 +112,17 @@ try:
     # Create curriculum plan
     curriculum = plan_curriculum(params)
     print(f"✅ Generated curriculum: {curriculum['lesson_title']}")
-    
+
     # Create PowerPoint presentation
     output_path = "history_lesson.pptx"
     create_deck(curriculum, output_path)
     print(f"✅ Created presentation: {output_path}")
-    
+
     # Verify file was created
     if os.path.exists(output_path):
         file_size = os.path.getsize(output_path) / 1024  # KB
         print(f"📊 Presentation size: {file_size:.1f} KB")
-    
+
 except Exception as e:
     print(f"❌ Error generating presentation: {e}")
 ```
@@ -150,7 +150,7 @@ slide_options = {
 # Generate with custom options
 try:
     create_deck(
-        curriculum, 
+        curriculum,
         "custom_lesson.pptx",
         **slide_options
     )
@@ -208,7 +208,7 @@ Learning Objectives
 
 By the end of this lesson, students will:
 • Define what an ecosystem is
-• Identify biotic and abiotic factors  
+• Identify biotic and abiotic factors
 • Explain food chains and energy flow
 • Analyze human impact on ecosystems
 ```
@@ -217,7 +217,7 @@ By the end of this lesson, students will:
 ```
 What is an Ecosystem?
 
-An ecosystem is a community of living organisms 
+An ecosystem is a community of living organisms
 interacting with their physical environment.
 
 Key Components:
@@ -268,7 +268,7 @@ python -m educator_agent \
 3. Environment variables in `.env`:
    ```
    MS_CLIENT_ID=your_azure_app_client_id
-   MS_TENANT_ID=your_azure_tenant_id  
+   MS_TENANT_ID=your_azure_tenant_id
    MS_CLIENT_SECRET=your_azure_app_client_secret
    ```
 
@@ -322,15 +322,15 @@ slide_options = {
 # Problem: Slides have placeholder images
 def verify_images(pptx_path):
     from pptx import Presentation
-    
+
     prs = Presentation(pptx_path)
     image_count = 0
-    
+
     for slide in prs.slides:
         for shape in slide.shapes:
             if hasattr(shape, "image"):
                 image_count += 1
-    
+
     print(f"📊 Found {image_count} images in presentation")
     return image_count > 0
 
@@ -350,7 +350,7 @@ slide_options = {
 ### Best Practices
 
 1. **Test Locally**: Always generate and review presentations locally first
-2. **Check File Sizes**: Monitor presentation sizes for email/upload limits  
+2. **Check File Sizes**: Monitor presentation sizes for email/upload limits
 3. **Verify Images**: Ensure all images loaded correctly
 4. **Review Content**: Check for appropriate language and concepts
 5. **Save Copies**: Keep backup copies of successful generations

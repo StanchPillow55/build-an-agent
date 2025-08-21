@@ -56,16 +56,16 @@ resources:
     - title: "MIT OCW 6.046 — Divide & Conquer"
       url: "https://ocw.mit.edu/courses/6-046j-introduction-to-algorithms-sma-5503-fall-2005/"
       why: "Formal treatment of recurrences and tight bounds."
-    - title: "Tech Interview Handbook — Big-O Cheatsheet"
-      url: "https://www.techinterviewhandbook.org/algorithms/big-o-cheatsheet/"
-      why: "Quick reference for complexity when checking your solutions."
-    - title: "Algorithms Explained (video) — Recursion Trees"
-      url: "https://www.youtube.com/playlist?list=PLLlTVphLQsuMtyeB91jyHXu5GtONlRLKR"
-      why: "Visual walkthroughs that align with warm-ups."
-  enrichment:
     - title: "Algorithm Visualizer — Recursion Examples"
       url: "https://algorithm-visualizer.org/"
       why: "Experiment to build intuition before proving."
+    - title: "Tech Interview Handbook — Big-O Cheatsheet"
+      url: "https://www.techinterviewhandbook.org/algorithms/big-o-cheatsheet/"
+      why: "Quick reference for complexity when checking your solutions."
+  enrichment:
+    - title: "Algorithms Explained (video) — Recursion Trees"
+      url: "https://www.youtube.com/playlist?list=PLLlTVphLQsuMtyeB91jyHXu5GtONlRLKR"
+      why: "Visual walkthroughs that align with warm-ups."
 
 speaker_notes:
   beats:

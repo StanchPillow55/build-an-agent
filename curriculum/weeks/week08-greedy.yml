@@ -1,84 +1,81 @@
-id: "week08-greedy-dp"
-title: "Greedy vs Dynamic Programming"
+id: "week08-greedy"
+title: "Greedy & DP Mastery"
 week: 8
 duration: "90 minutes"
-
+topics: ["DSA","DP"]
 objectives:
-  - "TBD: Add 4-5 learning objectives using action verbs"
-  - "TBD: Focus on measurable outcomes"
-  - "TBD: Connect to interview readiness"
-
+  - "Transform a brute-force interval scheduling solution into a DP with optimal substructure."
+  - "Implement bottom-up DP for coin change and LIS and compare to greedy heuristics."
+  - "Explain correctness via exchange arguments and subproblem independence."
 agenda:
   - time: "16:00"
-    activity: "Review and warm-up"
+    activity: "Warm-up: greedy fails (counterexample)"
     duration: 10
   - time: "16:10"
-    activity: "Core concept introduction"
+    activity: "Exchange arguments & substructure"
     duration: 20
   - time: "16:30"
-    activity: "Hands-on workshop"
-    duration: 30
-  - time: "17:00"
-    activity: "Problem solving practice"
+    activity: "Lab: bottom-up DP"
+    duration: 25
+  - time: "16:55"
+    activity: "Drill: coin change & LIS"
     duration: 20
-  - time: "17:20"
-    activity: "Assessment and wrap-up"
-    duration: 10
-
-topics:
-  - "DSA"
-  - "DP"
-
-prior_knowledge:
-  - "TBD: List 2-3 prerequisite concepts"
-
-activities:
-  - type: "demo"
-    title: "TBD: Main concept demonstration"
-    time_minutes: 20
-    steps:
-      - "TBD: Step 1"
-      - "TBD: Step 2"
-      - "TBD: Step 3"
-  - type: "coding"
-    title: "TBD: Hands-on coding practice"
-    time_minutes: 30
-    steps:
-      - "TBD: Practice problem 1"
-      - "TBD: Practice problem 2"
-      - "TBD: Implementation exercise"
-
-assessment:
-  - type: "leetcode"
-    ids: [322, 300, 435]
-    instructions: "TBD: Specific instructions for the week's focus"
-
+  - time: "17:15"
+    activity: "Wrap up session"
+    duration: 5
 resources:
   core:
-    - title: "Algorithm Visualizer"
+    - title: "MIT OCW 6.006 — Dynamic Programming"
+      url: "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-fall-2011/"
+      why: "Foundational patterns and proofs of correctness."
+    - title: "Algorithm Visualizer — DP"
       url: "https://algorithm-visualizer.org/"
-      why: "Interactive visualization for this week's concepts"
-    - title: "TBD: Add 2-3 core resources"
-      url: "https://example.com"
-      why: "TBD: Explain relevance"
+      why: "Visualize table fills and state transitions."
+    - title: "Tech Interview Handbook — DP Patterns"
+      url: "https://www.techinterviewhandbook.org/algorithms/dynamic-programming/"
+      why: "Interviewer-friendly recipes to structure answers."
   enrichment:
-    - title: "MIT OCW 6.006"
-      url: "https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-006-introduction-to-algorithms-fall-2011/"
-
-speaker_notes:
-  beats:
-    - "TBD: Key talking points for this session"
-    - "TBD: Common student questions and how to address them"
-    - "TBD: Connections to previous weeks and interview relevance"
-
-industry_tip:
-  title: "TBD: Career-relevant insight for this week"
-  bullets:
-    - "TBD: Practical advice from Success With SCE themes"
-  source: "Success With SCE slides"
-
+    - title: "6.851 — Advanced Data Structures (optional)"
+      url: "https://ocw.mit.edu/courses/6-851-advanced-data-structures-spring-2012/"
+      why: "Context for when DP meets specialized structures."
+prior_knowledge:
+  - "Define overlapping subproblems and optimal substructure."
+  - "Trace a 1D or 2D DP table update."
+activities:
+  - type: "lab"
+    title: "From greedy to DP"
+    time_minutes: 25
+    steps:
+      - "Start with a greedy attempt; intentionally fail on a counterexample."
+      - "Define DP state, transitions, and base cases."
+      - "Implement bottom-up with a table and reconstruct the solution."
+      - "Write a 4-sentence correctness argument (exchange or induction)."
+assessment:
+  - type: "leetcode"
+    ids: [322, 300]
+    instructions: "For LC 322, implement bottom-up DP and explain why greedy fails on certain coin systems. For LC 300, implement O(n log n) patience sorting approach and compare to O(n^2) DP."
 style:
   theme: "academic"
-  layout: "single-column"
-  callouts: ["tip", "career"]
-  slide_count_target: 25
+  layout: "two-column"
+  callouts: ["do-dont", "tip"]
+  slide_count_target: 22
+speaker_notes:
+  beats:
+    - "Greedy is fast but fragile; find counterexamples early."
+    - "DP needs a crisp state and recurrence; don't guess—derive."
+    - "Proof sketch via exchange arguments builds interviewer trust."
+    - "Patience sorting intuition for LIS."
+    - "Compare complexities and memory footprints."
+  time_cues:
+    - minute: 10
+      note: "present a failing greedy example."
+    - minute: 30
+      note: "start coding DP with explicit state notes."
+    - minute: 70
+      note: "compare complexities and memory."
+  demo_steps:
+    - "Walk through coin change DP table fill."
+    - "Demonstrate LIS tails array updates."
+  faq:
+    - question: "When do I choose top-down vs bottom-up?"
+      answer: "Top-down for sparse states and clarity; bottom-up for tight loops and memory control."

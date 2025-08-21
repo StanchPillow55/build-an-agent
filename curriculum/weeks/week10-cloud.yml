@@ -2,82 +2,79 @@ id: "week10-cloud"
 title: "Cloud & Distributed Systems"
 week: 10
 duration: "90 minutes"
-
+topics: ["Cloud","DevOps"]
 objectives:
-  - "TBD: Add 4-5 learning objectives using action verbs"
-  - "TBD: Focus on measurable outcomes"
-  - "TBD: Connect to interview readiness"
-
+  - "Implement a minimal Terraform stack and verify idempotent applies."
+  - "Containerize a service and deploy to Kubernetes; roll forward/back."
+  - "Measure autoscaling behavior with HPA under synthetic load."
 agenda:
   - time: "16:00"
-    activity: "Review and warm-up"
+    activity: "Warm-up: Well-Architected pillars"
     duration: 10
   - time: "16:10"
-    activity: "Core concept introduction"
+    activity: "IaC: Terraform mini-stack"
     duration: 20
   - time: "16:30"
-    activity: "Hands-on workshop"
-    duration: 30
-  - time: "17:00"
-    activity: "Problem solving practice"
+    activity: "K8s: containerize & deploy"
+    duration: 25
+  - time: "16:55"
+    activity: "HPA: load test & observe"
     duration: 20
-  - time: "17:20"
-    activity: "Assessment and wrap-up"
-    duration: 10
-
-topics:
-  - "Cloud"
-  - "DevOps"
-
-prior_knowledge:
-  - "TBD: List 2-3 prerequisite concepts"
-
-activities:
-  - type: "demo"
-    title: "TBD: Main concept demonstration"
-    time_minutes: 20
-    steps:
-      - "TBD: Step 1"
-      - "TBD: Step 2"
-      - "TBD: Step 3"
-  - type: "coding"
-    title: "TBD: Hands-on coding practice"
-    time_minutes: 30
-    steps:
-      - "TBD: Practice problem 1"
-      - "TBD: Practice problem 2"
-      - "TBD: Implementation exercise"
-
-assessment:
-  - type: "project"
-    project_description: "TBD: Week-appropriate project or assessment"
-
+  - time: "17:15"
+    activity: "Wrap up session"
+    duration: 5
 resources:
   core:
-    - title: "Algorithm Visualizer"
-      url: "https://algorithm-visualizer.org/"
-      why: "Interactive visualization for this week's concepts"
-    - title: "TBD: Add 2-3 core resources"
-      url: "https://example.com"
-      why: "TBD: Explain relevance"
+    - title: "AWS Well-Architected Framework (overview)"
+      url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/the-six-pillars.html"
+      why: "Shared language for reliability, performance, and cost."
+    - title: "Terraform — Getting Started"
+      url: "https://developer.hashicorp.com/terraform/tutorials/aws-get-started"
+      why: "Declarative infra with idempotent plans/applies."
+    - title: "Kubernetes — Concepts"
+      url: "https://kubernetes.io/docs/concepts/overview/"
+      why: "Core objects and rollout strategies relevant to interviews."
   enrichment:
-    - title: "MIT OCW 6.006"
-      url: "https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-006-introduction-to-algorithms-fall-2011/"
-
-speaker_notes:
-  beats:
-    - "TBD: Key talking points for this session"
-    - "TBD: Common student questions and how to address them"
-    - "TBD: Connections to previous weeks and interview relevance"
-
-industry_tip:
-  title: "TBD: Career-relevant insight for this week"
-  bullets:
-    - "TBD: Practical advice from Success With SCE themes"
-  source: "Success With SCE slides"
-
+    - title: "GitHub Actions — Deploy Workflows"
+      url: "https://docs.github.com/actions/deployment"
+      why: "Hook CI/CD to your cluster or cloud."
+prior_knowledge:
+  - "Use Dockerfiles and push/pull images."
+  - "Read YAML manifests and basic kubectl commands."
+activities:
+  - type: "lab"
+    title: "IaC → K8s pipeline"
+    time_minutes: 25
+    steps:
+      - "Provision a minimal VPC or namespace with Terraform; run apply twice to confirm idempotency."
+      - "Build a container image; deploy a Deployment + Service."
+      - "Configure an HPA on CPU; run a load generator and observe scaling."
+      - "Perform a controlled rollback and verify availability."
+assessment:
+  - type: "project"
+    instructions: "Submit a short screencast or log showing: `terraform plan` → `apply`, `kubectl rollout status`, HPA scaling events, and one rollback. Add a 1-page note on failure modes and mitigations."
 style:
   theme: "academic"
-  layout: "single-column"
-  callouts: ["tip", "career"]
-  slide_count_target: 25
+  layout: "two-column"
+  callouts: ["do-dont", "tip"]
+  slide_count_target: 22
+speaker_notes:
+  beats:
+    - "IaC is about repeatability; drift is your hidden enemy."
+    - "K8s primitives: Deployment, Service, HPA—interview essentials."
+    - "Autoscaling demo shows elasticity; mention metrics and SLOs."
+    - "Rollbacks and health checks build credibility."
+  time_cues:
+    - minute: 10
+      note: "show a Terraform plan."
+    - minute: 30
+      note: "deploy and inspect pods."
+    - minute: 55
+      note: "start load and watch HPA events."
+  demo_steps:
+    - "Run `terraform apply` twice to show no changes."
+    - "Deploy image; edit deployment to roll a new version."
+    - "Trigger load; view `kubectl top pods`."
+  faq:
+    - question: "Do interviews require cloud accounts?"
+      answer: "No; discuss patterns and trade-offs clearly and you'll score well."

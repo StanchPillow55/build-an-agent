@@ -50,6 +50,9 @@ assessment:
 
 resources:
   core:
+    - title: "MIT OCW 6.006 — Introduction to Algorithms"
+      url: "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-fall-2011/"
+      why: "Reference for DSA patterns and complexity analysis."
     - title: "Tech Interview Handbook — Answer Frameworks"
       url: "https://www.techinterviewhandbook.org/behavioral/"
       why: "Concise structures to pace answers; adapt for technical explanations."

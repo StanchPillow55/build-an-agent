@@ -1,82 +1,80 @@
-id: "week11-senior-work-day"
-title: "Get Your Career in Gear - Senior Work Day"
+id: "week11-senior"
+title: "DevOps & Observability — CI, Tracing, SLOs"
 week: 11
 duration: "90 minutes"
-
+topics: ["DevOps"]
 objectives:
-  - "TBD: Add 4-5 learning objectives using action verbs"
-  - "TBD: Focus on measurable outcomes"
-  - "TBD: Connect to interview readiness"
-
+  - "Implement a CI workflow that runs unit and end-to-end tests on PR."
+  - "Instrument tracing/metrics and build a Grafana dashboard."
+  - "Evaluate SLOs and configure an alert for an error-rate breach."
 agenda:
   - time: "16:00"
-    activity: "Review and warm-up"
+    activity: "Warm-up: what SLOs buy you"
     duration: 10
   - time: "16:10"
-    activity: "Core concept introduction"
+    activity: "CI: GH Actions pipeline"
     duration: 20
   - time: "16:30"
-    activity: "Hands-on workshop"
-    duration: 30
-  - time: "17:00"
-    activity: "Problem solving practice"
+    activity: "Tracing & metrics"
+    duration: 25
+  - time: "16:55"
+    activity: "Dashboards & alerting"
     duration: 20
-  - time: "17:20"
-    activity: "Assessment and wrap-up"
-    duration: 10
-
-topics:
-  - "Networking"
-
-prior_knowledge:
-  - "TBD: List 2-3 prerequisite concepts"
-
-activities:
-  - type: "demo"
-    title: "TBD: Main concept demonstration"
-    time_minutes: 20
-    steps:
-      - "TBD: Step 1"
-      - "TBD: Step 2"
-      - "TBD: Step 3"
-  - type: "coding"
-    title: "TBD: Hands-on coding practice"
-    time_minutes: 30
-    steps:
-      - "TBD: Practice problem 1"
-      - "TBD: Practice problem 2"
-      - "TBD: Implementation exercise"
-
-assessment:
-  - type: "project"
-    project_description: "TBD: Week-appropriate project or assessment"
-
+  - time: "17:15"
+    activity: "Wrap up session"
+    duration: 5
 resources:
   core:
-    - title: "Algorithm Visualizer"
-      url: "https://algorithm-visualizer.org/"
-      why: "Interactive visualization for this week's concepts"
-    - title: "TBD: Add 2-3 core resources"
-      url: "https://example.com"
-      why: "TBD: Explain relevance"
+    - title: "GitHub Actions — Testing on Pull Requests"
+      url: "https://docs.github.com/actions/using-workflows/events-that-trigger-workflows#pull_request"
+      why: "Trigger CI on the right events with required checks."
+    - title: "OpenTelemetry — Getting Started"
+      url: "https://opentelemetry.io/docs/"
+      why: "Vendor-neutral tracing and metrics."
+    - title: "Grafana — Building Dashboards"
+      url: "https://grafana.com/docs/grafana/latest/getting-started/"
+      why: "Translate signals into actionable visuals."
   enrichment:
-    - title: "MIT OCW 6.006"
-      url: "https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-006-introduction-to-algorithms-fall-2011/"
-
-speaker_notes:
-  beats:
-    - "TBD: Key talking points for this session"
-    - "TBD: Common student questions and how to address them"
-    - "TBD: Connections to previous weeks and interview relevance"
-
-industry_tip:
-  title: "TBD: Career-relevant insight for this week"
-  bullets:
-    - "TBD: Practical advice from Success With SCE themes"
-  source: "Success With SCE slides"
-
+    - title: "SRE Workbook — SLOs"
+      url: "https://sre.google/workbook/slo/"
+      why: "Real examples of SLI/SLO design."
+prior_knowledge:
+  - "Write basic unit tests and a simple e2e script."
+  - "Explain percentiles and why p99 matters."
+activities:
+  - type: "lab"
+    title: "Wire CI and observability"
+    time_minutes: 25
+    steps:
+      - "Create `.github/workflows/ci.yml` that installs deps and runs unit + e2e tests."
+      - "Add OpenTelemetry instrumentation to one request path."
+      - "Export metrics to a local collector and visualize in Grafana."
+      - "Create an alert: error rate > 2% over 5 minutes."
+assessment:
+  - type: "project"
+    instructions: "Submit a PR link showing CI status checks, a screenshot of a trace waterfall, a dashboard snapshot with p50/p95 latency, and an alert screenshot (or alert log)."
 style:
   theme: "academic"
-  layout: "single-column"
-  callouts: ["tip", "career"]
-  slide_count_target: 25
+  layout: "two-column"
+  callouts: ["do-dont", "tip"]
+  slide_count_target: 22
+speaker_notes:
+  beats:
+    - "CI builds trust; flaky tests erode it—stabilize first."
+    - "Trace spans connect the dots across services."
+    - "Dashboards should answer a question; avoid chart sprawl."
+    - "SLOs turn reliability into a contract with users."
+  time_cues:
+    - minute: 10
+      note: "open the workflow file live."
+    - minute: 30
+      note: "show spans in a trace viewer."
+    - minute: 65
+      note: "trigger an alert intentionally."
+  demo_steps:
+    - "Run a PR and watch checks pass."
+    - "Hit an instrumented endpoint; view traces/metrics."
+    - "Cause a 500 spike; watch the alert fire."
+  faq:
+    - question: "What if I can't run Grafana locally?"
+      answer: "Provide screenshots from a demo stack or use a lightweight local stack."

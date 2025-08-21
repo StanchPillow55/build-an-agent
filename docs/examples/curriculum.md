@@ -144,7 +144,7 @@ import json
 params = {
     "grade_level": "9th Grade",
     "subject": "World History",
-    "baseline": "basic knowledge of chronology and geography", 
+    "baseline": "basic knowledge of chronology and geography",
     "constraints": ["age-appropriate", "culturally-sensitive", "evidence-based"],
     "duration": "50 minutes"
 }
@@ -152,18 +152,18 @@ params = {
 # Generate curriculum
 try:
     curriculum = plan_curriculum(params)
-    
+
     # Access specific components
     print(f"Lesson: {curriculum['lesson_title']}")
     print(f"Objectives: {len(curriculum['learning_objectives'])}")
     print(f"Sections: {len(curriculum['content_outline'])}")
-    
+
     # Save to file
     with open("history_curriculum.json", "w") as f:
         json.dump(curriculum, f, indent=2)
-        
+
     print("✅ Curriculum saved to history_curriculum.json")
-    
+
 except Exception as e:
     print(f"❌ Error generating curriculum: {e}")
 ```
@@ -191,7 +191,7 @@ except ValueError as e:
 required_sections = ["introduction", "main_content", "assessment"]
 outline_titles = [section["title"].lower() for section in curriculum["content_outline"]]
 
-missing_sections = [section for section in required_sections 
+missing_sections = [section for section in required_sections
                    if not any(section in title for title in outline_titles)]
 
 if missing_sections:
@@ -220,13 +220,13 @@ for grade in grade_levels:
         "baseline": baseline,
         "constraints": ["sequential-learning", "scaffolded-instruction"]
     }
-    
+
     curriculum = plan_curriculum(params)
     curricula[grade] = curriculum
-    
+
     # Update baseline for next grade
     baseline = f"knowledge from {grade} {subject}"
-    
+
     print(f"✅ {grade} {subject} curriculum generated")
 
 # Save progression
@@ -251,20 +251,20 @@ grade = "4th Grade"
 
 for season, theme_list in themes.items():
     constraints = ["age-appropriate", "seasonal-relevance"] + theme_list
-    
+
     params = {
         "grade_level": grade,
         "subject": f"{season} {subject}",
         "constraints": constraints,
         "duration": "45 minutes"
     }
-    
+
     curriculum = plan_curriculum(params)
     filename = f"{season.lower()}_{subject.lower()}_curriculum.json"
-    
+
     with open(filename, "w") as f:
         json.dump(curriculum, f, indent=2)
-    
+
     print(f"✅ {season} {subject} curriculum saved to {filename}")
 ```
 

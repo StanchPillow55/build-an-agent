@@ -1,84 +1,80 @@
 id: "week07-mst"
-title: "MST & Shortest Path"
+title: "Graphs II — MST & SSSP"
 week: 7
 duration: "90 minutes"
-
+topics: ["DSA","Graphs"]
 objectives:
-  - "TBD: Add 4-5 learning objectives using action verbs"
-  - "TBD: Focus on measurable outcomes"
-  - "TBD: Connect to interview readiness"
-
+  - "Implement Kruskal's algorithm with DSU and prove the cut property informally."
+  - "Implement Dijkstra with a binary heap and analyze heap operations."
+  - "Compare Prim vs Kruskal on sparse vs dense graphs and justify choice."
 agenda:
   - time: "16:00"
-    activity: "Review and warm-up"
+    activity: "Warm-up: MST properties"
     duration: 10
   - time: "16:10"
-    activity: "Core concept introduction"
+    activity: "Kruskal + DSU"
     duration: 20
   - time: "16:30"
-    activity: "Hands-on workshop"
-    duration: 30
-  - time: "17:00"
-    activity: "Problem solving practice"
+    activity: "Lab: Dijkstra with PQ"
+    duration: 25
+  - time: "16:55"
+    activity: "Drill: flight routes"
     duration: 20
-  - time: "17:20"
-    activity: "Assessment and wrap-up"
-    duration: 10
-
-topics:
-  - "DSA"
-  - "Graphs"
-
-prior_knowledge:
-  - "TBD: List 2-3 prerequisite concepts"
-
-activities:
-  - type: "demo"
-    title: "TBD: Main concept demonstration"
-    time_minutes: 20
-    steps:
-      - "TBD: Step 1"
-      - "TBD: Step 2"
-      - "TBD: Step 3"
-  - type: "coding"
-    title: "TBD: Hands-on coding practice"
-    time_minutes: 30
-    steps:
-      - "TBD: Practice problem 1"
-      - "TBD: Practice problem 2"
-      - "TBD: Implementation exercise"
-
-assessment:
-  - type: "leetcode"
-    ids: [743, 787, 1584]
-    instructions: "TBD: Specific instructions for the week's focus"
-
+  - time: "17:15"
+    activity: "Wrap up session"
+    duration: 5
 resources:
   core:
-    - title: "Algorithm Visualizer"
+    - title: "MIT OCW 6.006 — MST & Shortest Paths"
+      url: "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-fall-2011/"
+      why: "Proof ideas and complexity guarantees for MST/SSSP."
+    - title: "Algorithm Visualizer — Dijkstra"
       url: "https://algorithm-visualizer.org/"
-      why: "Interactive visualization for this week's concepts"
-    - title: "TBD: Add 2-3 core resources"
-      url: "https://example.com"
-      why: "TBD: Explain relevance"
+      why: "Intuition for relaxation and frontier growth."
+    - title: "Tech Interview Handbook — Graph Shortest Paths"
+      url: "https://www.techinterviewhandbook.org/algorithms/graph/"
+      why: "Patterns and pitfalls to mention aloud."
   enrichment:
-    - title: "MIT OCW 6.006"
-      url: "https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-006-introduction-to-algorithms-fall-2011/"
-
-speaker_notes:
-  beats:
-    - "TBD: Key talking points for this session"
-    - "TBD: Common student questions and how to address them"
-    - "TBD: Connections to previous weeks and interview relevance"
-
-industry_tip:
-  title: "TBD: Career-relevant insight for this week"
-  bullets:
-    - "TBD: Practical advice from Success With SCE themes"
-  source: "Success With SCE slides"
-
+    - title: "6.851 — Advanced Data Structures (for PQ variants)"
+      url: "https://ocw.mit.edu/courses/6-851-advanced-data-structures-spring-2012/"
+      why: "Explore alternative priority queues and their trade-offs."
+prior_knowledge:
+  - "Compute big-O for sorting edges and union/find operations."
+  - "Explain negative edge constraints for SSSP."
+activities:
+  - type: "lab"
+    title: "Implement SSSP and MST"
+    time_minutes: 25
+    steps:
+      - "Code Kruskal with DSU; verify spanning property and acyclicity."
+      - "Implement Dijkstra with a binary heap; log relaxations."
+      - "Generate sparse vs dense graphs and compare run times."
+      - "Write a short summary: which algorithm wins and why."
+assessment:
+  - type: "leetcode"
+    ids: [743, 787]
+    instructions: "For LC 743, implement Dijkstra with a PQ; justify complexity O(E log V). For LC 787, discuss why simple Dijkstra fails and how you modified the state (stops constraint)."
 style:
   theme: "academic"
-  layout: "single-column"
-  callouts: ["tip", "career"]
-  slide_count_target: 25
+  layout: "two-column"
+  callouts: ["do-dont", "tip"]
+  slide_count_target: 22
+speaker_notes:
+  beats:
+    - "MST cut & cycle properties guide correctness."
+    - "Dijkstra's invariant: current PQ min has final shortest distance."
+    - "Sparse vs dense: data structure choice matters."
+    - "When negatives appear, pick Bellman-Ford or SPFA."
+  time_cues:
+    - minute: 10
+      note: "sketch Kruskal steps."
+    - minute: 30
+      note: "start Dijkstra; highlight relaxations."
+    - minute: 70
+      note: "wrap with performance comparison."
+  demo_steps:
+    - "Trace one Kruskal run on a 6-node graph."
+    - "Show PQ push/pop and distance updates."
+  faq:
+    - question: "Why not Prim always?"
+      answer: "Prim with Fibonacci heaps has nice bounds but higher constants; implementation complexity matters."

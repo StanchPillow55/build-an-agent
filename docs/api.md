@@ -20,7 +20,7 @@ Core functions for curriculum generation and validation:
 ```python
 def plan_curriculum(params: Dict[str, Any]) -> Dict[str, Any]:
     """Plan a curriculum given the input parameters.
-    
+
     Args:
         params: Dictionary containing:
             - grade_level: Target grade level (e.g., "8th Grade")
@@ -28,7 +28,7 @@ def plan_curriculum(params: Dict[str, Any]) -> Dict[str, Any]:
             - baseline: Prior knowledge assumption
             - constraints: List of constraints
             - duration: Lesson duration
-    
+
     Returns:
         Validated curriculum plan dictionary
     """
@@ -52,29 +52,29 @@ Content safety and PII protection:
 ```python
 def clean_text(text: str) -> str:
     """Clean text by removing profanity and replacing PII with [REDACTED].
-    
+
     Args:
         text: Input text to clean
-        
+
     Returns:
         Cleaned text with profanity censored and PII redacted
     """
 
 def enforce_constraints(plan: Dict[str, Any]) -> Dict[str, Any]:
     """Enforce content constraints on a curriculum plan.
-    
+
     Runs clean_text on every user-visible string in the curriculum JSON.
-    
+
     Args:
         plan: Curriculum plan dictionary
-        
+
     Returns:
         Cleaned curriculum plan
     """
 
 class ContentSanitizer:
     """Content sanitizer for educational materials.
-    
+
     Features:
     - Profanity filtering using better-profanity
     - PII detection for names, emails, phone numbers, SSNs, credit cards
@@ -92,11 +92,11 @@ PowerPoint presentation generation:
 ```python
 def create_deck(curriculum_plan: Dict[str, Any], output_file: str) -> None:
     """Create a PowerPoint presentation from curriculum plan.
-    
+
     Args:
         curriculum_plan: Validated curriculum dictionary
         output_file: Output .pptx file path
-        
+
     Features:
     - Automatic slide generation from curriculum sections
     - Image integration with educational content
@@ -113,10 +113,10 @@ Generate detailed speaker notes for educators:
 ```python
 def generate_speaker_notes(curriculum_plan: Dict[str, Any]) -> str:
     """Generate comprehensive speaker notes in Markdown format.
-    
+
     Args:
         curriculum_plan: Curriculum dictionary
-        
+
     Returns:
         Formatted Markdown speaker notes
     """
@@ -129,12 +129,12 @@ def generate_speaker_notes(curriculum_plan: Dict[str, Any]) -> str:
 Bundle complete educational materials:
 
 ```python
-def create_package(curriculum_plan: Dict[str, Any], 
-                  output_zip: str, 
+def create_package(curriculum_plan: Dict[str, Any],
+                  output_zip: str,
                   include_pptx: bool = False,
                   include_notes: bool = False) -> None:
     """Create a complete educational package.
-    
+
     Args:
         curriculum_plan: Curriculum dictionary
         output_zip: Output ZIP file path
@@ -154,14 +154,14 @@ Microsoft Graph API integration:
 ```python
 def export_to_onedrive(pptx_path: str, title: str) -> Dict[str, str]:
     """Export presentation to Microsoft OneDrive.
-    
+
     Args:
         pptx_path: Local PowerPoint file path
         title: Presentation title
-        
+
     Returns:
         Dictionary with share_url and file_id
-        
+
     Prerequisites:
     - Microsoft 365 EDU account
     - Azure app with Graph API permissions
@@ -182,7 +182,7 @@ python -m educator_agent --grade "8th Grade" --subject "Environmental Science"
 
 **Available Arguments:**
 - `--grade`: Target grade level (required)
-- `--subject`: Subject or topic (required) 
+- `--subject`: Subject or topic (required)
 - `--baseline`: Prior knowledge baseline
 - `--constraints`: Comma-separated constraints
 - `--model`: OpenAI model to use

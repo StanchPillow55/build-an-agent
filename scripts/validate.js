@@ -80,9 +80,10 @@ async function validateRubric(session, filePath) {
 
     // Check objectives are measurable (start with action verbs)
     const actionVerbs = [
-        'analyze', 'apply', 'assess', 'build', 'compare', 'create', 'debug',
-        'demonstrate', 'design', 'evaluate', 'explain', 'identify', 'implement',
-        'optimize', 'solve', 'understand', 'use'
+        'analyze', 'apply', 'build', 'classify', 'compare', 'compute', 'containerize', 'create', 'define',
+        'demonstrate', 'deploy', 'design', 'describe', 'evaluate', 'explain', 'identify', 'implement',
+        'instrument', 'justify', 'measure', 'model', 'optimize', 'plan', 'present', 'prove', 'refactor',
+        'set', 'simulate', 'solve', 'test', 'trace', 'transform'
     ];
 
     if (session.objectives) {

@@ -1,84 +1,80 @@
 id: "week06-graphs"
-title: "Graphs I - BFS/DFS & Union-Find"
+title: "Graphs I — BFS/DFS & Union-Find"
 week: 6
 duration: "90 minutes"
-
+topics: ["DSA","Graphs"]
 objectives:
-  - "TBD: Add 4-5 learning objectives using action verbs"
-  - "TBD: Focus on measurable outcomes"
-  - "TBD: Connect to interview readiness"
-
+  - "Implement BFS and DFS traversals and compute O(V+E) complexity."
+  - "Implement Union-Find with union-by-rank and path compression and profile ops."
+  - "Identify cycles and connectivity using DSU and compare to DFS-based methods."
 agenda:
   - time: "16:00"
-    activity: "Review and warm-up"
+    activity: "Warm-up: graph reps (adj list vs matrix)"
     duration: 10
   - time: "16:10"
-    activity: "Core concept introduction"
+    activity: "BFS/DFS patterns"
     duration: 20
   - time: "16:30"
-    activity: "Hands-on workshop"
-    duration: 30
-  - time: "17:00"
-    activity: "Problem solving practice"
+    activity: "Lab: DSU with tests"
+    duration: 25
+  - time: "16:55"
+    activity: "Drill: grid + course schedule"
     duration: 20
-  - time: "17:20"
-    activity: "Assessment and wrap-up"
-    duration: 10
-
-topics:
-  - "DSA"
-  - "Graphs"
-
+  - time: "17:15"
+    activity: "Wrap up session"
+    duration: 5
+resources:
+  core:
+    - title: "MIT OCW — Graph Traversals"
+      url: "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-fall-2011/"
+      why: "Connect representation choices to traversal complexity."
+    - title: "Algorithm Visualizer — Graphs"
+      url: "https://algorithm-visualizer.org/"
+      why: "See queue/stack behavior for BFS/DFS."
+    - title: "Tech Interview Handbook — Graph Patterns"
+      url: "https://www.techinterviewhandbook.org/algorithms/graph/"
+      why: "Common interview prompts and templates."
+  enrichment:
+    - title: "DSU Explained"
+      url: "https://cp-algorithms.com/data_structures/disjoint_set_union.html"
+      why: "Competitive programming angle with proofs."
 prior_knowledge:
-  - "TBD: List 2-3 prerequisite concepts"
-
+  - "Describe adjacency list vs adjacency matrix trade-offs."
+  - "Trace recursion depth limits and iterative alternatives."
 activities:
-  - type: "demo"
-    title: "TBD: Main concept demonstration"
-    time_minutes: 20
+  - type: "lab"
+    title: "DSU implementation + benchmarks"
+    time_minutes: 25
     steps:
-      - "TBD: Step 1"
-      - "TBD: Step 2"
-      - "TBD: Step 3"
-  - type: "coding"
-    title: "TBD: Hands-on coding practice"
-    time_minutes: 30
-    steps:
-      - "TBD: Practice problem 1"
-      - "TBD: Practice problem 2"
-      - "TBD: Implementation exercise"
-
+      - "Implement `find` with path compression."
+      - "Implement `union` with union-by-rank."
+      - "Generate random edges and compare performance with and without optimizations."
+      - "Add tests: cycle detection and component counting."
 assessment:
   - type: "leetcode"
     ids: [200, 207, 684]
-    instructions: "TBD: Specific instructions for the week's focus"
-
-resources:
-  core:
-    - title: "Algorithm Visualizer"
-      url: "https://algorithm-visualizer.org/"
-      why: "Interactive visualization for this week's concepts"
-    - title: "TBD: Add 2-3 core resources"
-      url: "https://example.com"
-      why: "TBD: Explain relevance"
-  enrichment:
-    - title: "MIT OCW 6.006"
-      url: "https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-006-introduction-to-algorithms-fall-2011/"
-
-speaker_notes:
-  beats:
-    - "TBD: Key talking points for this session"
-    - "TBD: Common student questions and how to address them"
-    - "TBD: Connections to previous weeks and interview relevance"
-
-industry_tip:
-  title: "TBD: Career-relevant insight for this week"
-  bullets:
-    - "TBD: Practical advice from Success With SCE themes"
-  source: "Success With SCE slides"
-
+    instructions: "For LC 200, use BFS/DFS and justify O(V+E). For LC 207 and 684, compare DSU vs graph traversal and explain which strategy you chose and why."
 style:
   theme: "academic"
-  layout: "single-column"
-  callouts: ["tip", "career"]
-  slide_count_target: 25
+  layout: "two-column"
+  callouts: ["do-dont", "tip"]
+  slide_count_target: 22
+speaker_notes:
+  beats:
+    - "Representation impacts complexity and memory."
+    - "BFS for shortest unweighted paths; DFS for reachability/topology."
+    - "DSU excels at dynamic connectivity and cycle checks."
+    - "Trade-offs: recursion depth vs explicit stacks."
+  time_cues:
+    - minute: 10
+      note: "draw queue/stack transitions."
+    - minute: 30
+      note: "begin DSU coding; stress tests first."
+    - minute: 70
+      note: "recap and link to MST next week."
+  demo_steps:
+    - "Show path compression effect with a before/after depth."
+    - "Demonstrate cycle detection with DSU."
+  faq:
+    - question: "When not to use DSU?"
+      answer: "When you need actual paths or topological ordering."
