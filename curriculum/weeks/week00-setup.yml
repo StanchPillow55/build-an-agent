@@ -1,115 +1,99 @@
 id: "week00-setup"
-title: "Setup & Baseline Assessment"
+title: "Setup & Baseline"
 week: 0
 duration: "90 minutes"
 
 objectives:
-  - "Configure a consistent development environment with VS Code and essential extensions"
-  - "Establish Git workflow fundamentals for version control and collaboration"
-  - "Create a structured testing harness for practicing coding problems"
-  - "Assess current technical skills and identify growth areas"
-  - "Understand the structure and expectations of the 12-week program"
+  - "Set up the IDE with required extensions and workspace settings."
+  - "Create a Git branching workflow (feature/release/hotfix) and open a test PR."
+  - "Implement a unit-test harness and run a passing local test suite."
+  - "Measure baseline problem-solving speed on two LeetCode problems."
+  - "Explain how to submit weekly artifacts (code, notes, and reflections)."
 
 agenda:
   - time: "16:00"
-    activity: "Welcome & introductions"
-    duration: 10
-  - time: "16:10"
-    activity: "Program overview and expectations"
-    duration: 15
-  - time: "16:25"
-    activity: "Development environment setup"
-    duration: 25
-  - time: "16:50"
-    activity: "Git fundamentals workshop"
-    duration: 20
-  - time: "17:10"
-    activity: "Baseline assessment (2 coding problems)"
-    duration: 15
-  - time: "17:25"
-    activity: "Q&A and next steps"
+    activity: "Welcome, goals, success criteria"
     duration: 5
+  - time: "16:05"
+    activity: "IDE configuration & workspace conventions"
+    duration: 25
+  - time: "16:30"
+    activity: "Git workflow: branch → commit → PR"
+    duration: 25
+  - time: "16:55"
+    activity: "Testing harness: run & debug"
+    duration: 20
+  - time: "17:15"
+    activity: "Baseline drill & wrap"
+    duration: 15
 
 topics:
   - "Setup"
-  - "Git"
 
 prior_knowledge:
-  - "Basic command line navigation (cd, ls, mkdir)"
-  - "Understanding of what Git is conceptually"
-  - "Text editor experience (any editor is fine)"
+  - "Identify basic CLI usage (cd, ls, mkdir) and PATH concepts."
+  - "Describe the difference between compiled vs interpreted tooling."
+  - "Recall what unit tests assert and why deterministic tests matter."
 
 activities:
   - type: "lab"
-    title: "IDE Setup and Configuration"
+    title: "Environment bring-up"
     time_minutes: 25
     steps:
-      - "Download and install VS Code from https://code.visualstudio.com/"
-      - "Install essential extensions: Python, GitLens, Code Runner, Bracket Pair Colorizer"
-      - "Configure user settings for consistent coding style (tab size, auto-save)"
-      - "Create a dedicated 'interview-prep' folder structure"
-      - "Test setup by creating a simple Hello World program"
-  - type: "demo"
-    title: "Git Workflow Fundamentals"
-    time_minutes: 20
-    steps:
-      - "Initialize a new Git repository in interview-prep folder"
-      - "Configure git config --global user.name and user.email"
-      - "Practice git add, commit, and status commands"
-      - "Create a GitHub repository and connect with git remote add origin"
-      - "Make your first push to GitHub"
+      - "Create a workspace folder and open it in the IDE."
+      - "Install recommended extensions and apply project settings."
+      - "Clone the starter repo and run `npm test` to verify the harness."
+      - "Open a feature branch and push an initial commit."
 
 assessment:
   - type: "leetcode"
-    ids: [1, 121]
-    instructions: "Solve in 15 minutes total. Focus on explaining your approach clearly, even if you don't finish coding. We're assessing current skill level, not perfection."
-  - type: "reflection"
-    instructions: "Write 2-3 sentences about your comfort level with Git and what development tools you've used before."
+    ids: [53, 121]
+    instructions: "Solve LC 53 and LC 121 locally. For each, commit: (1) a tested solution; (2) a 3–5 sentence note that explains the approach and time/space complexity; (3) a short note on your elapsed time and what slowed you down."
 
 resources:
   core:
-    - title: "VS Code Getting Started"
-      url: "https://code.visualstudio.com/docs/getstarted/getting-started"
-      why: "Official guide for editor setup and basic features"
-    - title: "Git Handbook"
-      url: "https://guides.github.com/introduction/git-handbook/"
-      why: "Comprehensive Git fundamentals in plain English"
-    - title: "Algorithm Visualizer"
-      url: "https://algorithm-visualizer.org/"
-      why: "Interactive tool for understanding algorithms visually"
+    - title: "VS Code — Getting Started"
+      url: "https://code.visualstudio.com/docs"
+      why: "Step-by-step setup and extension management for a consistent dev environment."
+    - title: "Atlassian — Git Branching Workflows"
+      url: "https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow"
+      why: "Clear patterns for feature/release/hotfix flows used in industry."
+    - title: "GitHub Actions — Quickstart"
+      url: "https://docs.github.com/actions/quickstart"
+      why: "Foundation for CI that you will extend in DevOps weeks."
   enrichment:
-    - title: "GitHub Flow Guide"
-      url: "https://guides.github.com/introduction/flow/"
-    - title: "Command Line Crash Course"
-      url: "https://learnpythonthehardway.org/python3/appendixa.html"
+    - title: "Git — Everyday Commands"
+      url: "https://git-scm.com/docs/giteveryday"
+      why: "Reference for the most common day-to-day operations."
 
 speaker_notes:
   beats:
-    - "Start with energy and enthusiasm - this is the foundation of their interview success journey"
-    - "Address imposter syndrome early - everyone starts somewhere, focus on growth mindset"
-    - "Emphasize consistency over perfection - daily practice beats sporadic cramming"
-    - "Be hands-on during setup - circulate and help students debug installation issues"
-    - "During baseline assessment, remind students this is diagnostic, not evaluative"
-    - "End with clear next steps and encourage them to practice Git commands before next week"
+    - "State outcome: a reproducible local dev environment + a passing test harness."
+    - "Justify Git branching: isolates work and accelerates code review."
+    - "Testing payoff: confidence to refactor later weeks without fear."
+    - "Baseline rationale: measure to improve; we'll compare again in Week 12."
+    - "Homework hand-in: PR with checklist so TAs can spot issues quickly."
   time_cues:
-    - minute: 15
-      note: "Should be starting environment setup by now - check if anyone needs help with downloads"
-    - minute: 45
-      note: "Transition to Git fundamentals - make sure everyone has VS Code working first"
-    - minute: 70
-      note: "Begin baseline assessment - emphasize problem-solving approach over completion"
+    - minute: 10
+      note: "transition to IDE setup demo."
+    - minute: 30
+      note: "start Git workflow mini-lab."
+    - minute: 55
+      note: "run tests and show a failing → passing cycle."
+    - minute: 75
+      note: "start baseline drill; remind to record time."
   demo_steps:
-    - "Show VS Code interface tour - file explorer, terminal integration, extensions panel"
-    - "Demonstrate git init, add, commit sequence with clear terminal outputs"
-    - "Show how to view git log and understand commit history"
-    - "Walk through creating GitHub repo and connecting local repo to remote"
+    - "Show installing extensions from a shared `.vscode/extensions.json`."
+    - "Create `feat/baseline-setup` branch; commit a README tweak."
+    - "Add a trivial unit test; run watcher; fix a failing assertion."
+    - "Open a draft PR and tag it with labels."
   faq:
-    - question: "Do I need to memorize all these Git commands?"
-      answer: "No! Focus on understanding the workflow. You'll use these commands frequently enough that they'll become natural. Keep a cheat sheet handy."
-    - question: "What if I'm already comfortable with a different IDE?"
-      answer: "VS Code is recommended for consistency in workshops, but you can use what you're comfortable with. Just make sure you have similar functionality."
-    - question: "How difficult will the weekly assessments be?"
-      answer: "They'll progressively build in difficulty. Week 0 is baseline, by Week 12 you'll tackle system design. Trust the process and focus on consistent practice."
+    - question: "Why not use global Node installations per project?"
+      answer: "Project-local toolchains avoid version drift; lock files become trustworthy."
+    - question: "What if tests are flaky on my machine?"
+      answer: "Check Node version, lockfile, and ensure no reliance on wall-clock or randomness."
+    - question: "How much detail is expected in baseline notes?"
+      answer: "3–5 sentences per problem: approach, big-O, and one improvement you'll try next time."
 
 industry_tip:
   title: "Resume & LinkedIn Essentials"
@@ -123,6 +107,6 @@ industry_tip:
 
 style:
   theme: "academic"
-  layout: "single-column"
-  callouts: ["do-dont", "tip", "career"]
+  layout: "two-column"
+  callouts: ["do-dont", "tip"]
   slide_count_target: 22

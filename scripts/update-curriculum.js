@@ -1,4 +1,14 @@
-id: "week02-sorting"
+#!/usr/bin/env node
+
+/**
+ * Script to apply curriculum compliance changes in bulk
+ */
+
+const fs = require('fs');
+const path = require('path');
+
+// Update week02-sorting.yml
+const week02Content = `id: "week02-sorting"
 title: "DSA II — Sorting & Arrays"
 week: 2
 duration: "90 minutes"
@@ -22,7 +32,7 @@ agenda:
     activity: "Drill: array problems"
     duration: 20
   - time: "17:15"
-    activity: "Wrap up session"
+    activity: "Wrap"
     duration: 5
 
 topics:
@@ -91,7 +101,12 @@ speaker_notes:
       answer: "Small integer ranges where O(n+k) and memory k is acceptable."
 
 style:
-  theme: "academic"
+  theme: "hoplite"
   layout: "two-column"
-  callouts: ["do-dont", "tip"]
+  callouts: ["do", "dont"]
   slide_count_target: 22
+`;
+
+// Write the content
+fs.writeFileSync(path.join(__dirname, '../curriculum/weeks/week02-sorting.yml'), week02Content);
+console.log('Updated week02-sorting.yml');

@@ -4,81 +4,91 @@ week: 3
 duration: "90 minutes"
 
 objectives:
-  - "TBD: Add 4-5 learning objectives using action verbs"
-  - "TBD: Focus on measurable outcomes"
-  - "TBD: Connect to interview readiness"
+  - "Implement an open-addressing hash map with linear probing and proper deletion."
+  - "Analyze expected probes vs load factor and evaluate resizing strategies."
+  - "Apply frequency-map and sliding-window templates to solve substring problems."
 
 agenda:
   - time: "16:00"
-    activity: "Review and warm-up"
-    duration: 10
-  - time: "16:10"
-    activity: "Core concept introduction"
-    duration: 20
+    activity: "Warm-up: map vs set patterns"
+    duration: 5
+  - time: "16:05"
+    activity: "Hashing: collisions, probing, deletion"
+    duration: 25
   - time: "16:30"
-    activity: "Hands-on workshop"
-    duration: 30
-  - time: "17:00"
-    activity: "Problem solving practice"
+    activity: "Lab: build & test hash map"
+    duration: 25
+  - time: "16:55"
+    activity: "Drill: sliding window"
     duration: 20
-  - time: "17:20"
-    activity: "Assessment and wrap-up"
-    duration: 10
+  - time: "17:15"
+    activity: "Wrap up session"
+    duration: 5
 
 topics:
   - "DSA"
-  - "Arrays"
 
 prior_knowledge:
-  - "TBD: List 2-3 prerequisite concepts"
+  - "Trace pointer-free arrays and understand sentinel values."
+  - "Explain amortized O(1) for dynamic arrays and why it matters for resizing."
 
 activities:
-  - type: "demo"
-    title: "TBD: Main concept demonstration"
-    time_minutes: 20
+  - type: "lab"
+    title: "Build a lightweight hash map"
+    time_minutes: 25
     steps:
-      - "TBD: Step 1"
-      - "TBD: Step 2"
-      - "TBD: Step 3"
-  - type: "coding"
-    title: "TBD: Hands-on coding practice"
-    time_minutes: 30
-    steps:
-      - "TBD: Practice problem 1"
-      - "TBD: Practice problem 2"
-      - "TBD: Implementation exercise"
+      - "Implement `put/get/delete` with linear probing."
+      - "Add tombstones to handle deletions correctly."
+      - "Track load factor and trigger resize at 0.7."
+      - "Write tests that simulate clustering and verify expected probe counts."
 
 assessment:
   - type: "leetcode"
     ids: [1, 76, 438]
-    instructions: "TBD: Specific instructions for the week's focus"
+    instructions: "For LC 1/76/438, apply frequency-map or sliding-window templates. In your notes, identify the window invariant and explain why shrinking/expanding preserves correctness and yields O(n)."
 
 resources:
   core:
-    - title: "Algorithm Visualizer"
+    - title: "MIT OCW — Hashing (6.006)"
+      url: "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-fall-2011/"
+      why: "Covers hash functions, chaining vs open addressing, and analysis."
+    - title: "Algorithm Visualizer — Sliding Window"
       url: "https://algorithm-visualizer.org/"
-      why: "Interactive visualization for this week's concepts"
-    - title: "TBD: Add 2-3 core resources"
-      url: "https://example.com"
-      why: "TBD: Explain relevance"
+      why: "Helps reason about window expansion/contraction."
+    - title: "Tech Interview Handbook — Hash Map Patterns"
+      url: "https://www.techinterviewhandbook.org/algorithms/hash-map/"
+      why: "Interview-ready templates and pitfalls."
   enrichment:
-    - title: "MIT OCW 6.006"
-      url: "https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-006-introduction-to-algorithms-fall-2011/"
+    - title: "Open addressing vs chaining"
+      url: "https://en.wikipedia.org/wiki/Hash_table"
+      why: "Reference comparison and terminology."
 
 speaker_notes:
   beats:
-    - "TBD: Key talking points for this session"
-    - "TBD: Common student questions and how to address them"
-    - "TBD: Connections to previous weeks and interview relevance"
-
-industry_tip:
-  title: "TBD: Career-relevant insight for this week"
-  bullets:
-    - "TBD: Practical advice from Success With SCE themes"
-  source: "Success With SCE slides"
+    - "Two collision families: chaining vs open addressing."
+    - "Deletion is the subtle bug: tombstones keep probe sequences intact."
+    - "Load factor trade-offs: memory vs expected probes."
+    - "Window templates: fixed-size vs variable-size."
+    - "Interview move: state the invariant out loud."
+  time_cues:
+    - minute: 10
+      note: "draw probe sequence on whiteboard."
+    - minute: 30
+      note: "begin coding; remind to add tests first."
+    - minute: 65
+      note: "pivot to sliding window drills."
+  demo_steps:
+    - "Insert a cluster and show how deletion without tombstones fails."
+    - "Show resizing doubles capacity and rehashes keys."
+    - "Step through a window for LC 76."
+  faq:
+    - question: "Why not always use chaining?"
+      answer: "Cache locality favors open addressing; trade-off depends on workload."
+    - question: "How do I pick a good hash?"
+      answer: "Use library hashes in production; in interviews, mention modulo with large primes and mixing."
 
 style:
   theme: "academic"
-  layout: "single-column"
-  callouts: ["tip", "career"]
-  slide_count_target: 25
+  layout: "two-column"
+  callouts: ["do-dont", "tip"]
+  slide_count_target: 22

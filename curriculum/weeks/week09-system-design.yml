@@ -4,137 +4,84 @@ week: 9
 duration: "90 minutes"
 
 objectives:
-  - "Design scalable URL shortener system with proper trade-off analysis"
-  - "Implement rate limiting strategies using different algorithms"
-  - "Analyze database partitioning and caching decisions for large-scale systems"
-  - "Apply system design fundamentals to real-world architecture problems"
-  - "Communicate design decisions clearly with diagrams and justifications"
+  - "Define high-level APIs and data models for a small web service."
+  - "Evaluate CAP and consistency models for the core operations."
+  - "Design a scaling plan using caching, sharding, and replication."
+  - "Design a URL shortener and rate limiter with clear trade-offs."
+  - "Present and justify design decisions under time constraints."
 
 agenda:
   - time: "16:00"
-    activity: "System design interview approach and framework"
-    duration: 10
-  - time: "16:10"
-    activity: "URL shortener system deep dive"
+    activity: "Warm-up: requirements triage"
+    duration: 5
+  - time: "16:05"
+    activity: "Scaling patterns: cache, shard, replicate"
     duration: 25
-  - time: "16:35"
-    activity: "Rate limiting algorithms and implementation"
-    duration: 20
+  - time: "16:30"
+    activity: "Design lab: URL shortener"
+    duration: 25
   - time: "16:55"
-    activity: "Database design and scaling strategies"
+    activity: "Design lab: rate limiter"
     duration: 20
   - time: "17:15"
-    activity: "Mock system design interview practice"
-    duration: 10
-  - time: "17:25"
-    activity: "Resources and continued learning"
+    activity: "Share-outs & wrap"
     duration: 5
 
 topics:
   - "System-Design"
 
 prior_knowledge:
-  - "Basic understanding of databases and SQL"
-  - "HTTP protocol fundamentals"
-  - "Familiarity with API design concepts"
-  - "Understanding of time/space complexity trade-offs"
+  - "Describe latency vs throughput and p-percentiles."
+  - "Differentiate strong vs eventual consistency at a high level."
 
 activities:
-  - type: "demo"
-    title: "URL Shortener Architecture Design"
-    time_minutes: 25
+  - type: "lab"
+    title: "Two-problem design studio"
+    time_minutes: 45
     steps:
-      - "Define requirements: 100M URLs/day, read:write = 100:1, 5 year retention"
-      - "Calculate storage estimates: URL length, shortened key size, metadata"
-      - "Design database schema: URL mappings, user data, analytics"
-      - "Architect service components: API gateway, shortening service, analytics"
-      - "Discuss scaling bottlenecks and solutions (caching, CDN, load balancing)"
-  - type: "coding"
-    title: "Rate Limiting Implementation"
-    time_minutes: 20
-    steps:
-      - "Implement token bucket algorithm for API rate limiting"
-      - "Code sliding window log approach for more precise limiting"
-      - "Compare fixed vs sliding window trade-offs"
-      - "Design distributed rate limiting with Redis"
-      - "Handle edge cases: burst traffic, system clock skew"
-  - type: "discussion"
-    title: "Database Scaling Deep Dive"
-    time_minutes: 20
-    steps:
-      - "Analyze when to use SQL vs NoSQL for different system components"
-      - "Design partitioning strategy: consistent hashing for shortened URLs"
-      - "Plan caching layers: application cache, CDN, database query cache"
-      - "Discuss replication strategies and eventual consistency trade-offs"
-      - "Plan for disaster recovery and backup strategies"
+      - "URL shortener: define API, schema, and hash/id strategy."
+      - "Sketch read/write paths with cache and DB."
+      - "Rate limiter: choose algorithm (token bucket or leaky bucket) and data store."
+      - "List trade-offs and failure modes; present a 2-minute defense."
 
 assessment:
   - type: "project"
-    project_description: "Design a simplified Twitter-like system that can handle 100M daily active users. Include: timeline generation, tweet storage, user following relationships, and basic analytics. Provide architecture diagram, database schema, and API design with scaling justifications."
-  - type: "reflection"
-    instructions: "Identify the most challenging aspect of system design thinking. What component would you want to research further after this session?"
+    instructions: "Submit two diagrams (URL shortener + rate limiter) with a 1-page note that states assumptions, SLOs, and two trade-offs you would revisit with more time."
 
 resources:
   core:
-    - title: "Designing Data-Intensive Applications"
-      url: "https://dataintensive.net/"
-      why: "Comprehensive guide to building scalable, reliable systems with real-world examples"
-    - title: "System Design Primer"
-      url: "https://github.com/donnemartin/system-design-primer"
-      why: "Open-source collection of system design concepts, trade-offs, and examples"
-    - title: "High Scalability Blog"
-      url: "http://highscalability.com/"
-      why: "Real-world case studies of how major systems are architected and scaled"
-  enrichment:
-    - title: "MIT 6.824 Distributed Systems"
-      url: "https://pdos.csail.mit.edu/6.824/"
-    - title: "AWS Architecture Center"
-      url: "https://aws.amazon.com/architecture/"
+    - title: "ByteByteGo — System Design Primer"
+      url: "https://bytebytego.com/"
+      why: "Succinct overviews of common patterns and trade-offs."
+    - title: "Google SRE — Availability & SLIs"
+      url: "https://sre.google/sre-book/availability-table/"
+      why: "Ground design decisions in reliability targets."
+    - title: "Cloudflare — Rate Limiting Concepts"
+      url: "https://developers.cloudflare.com/rate-limits/about/"
+      why: "Concrete designs and pitfalls from a production CDN."
 
 speaker_notes:
   beats:
-    - "Emphasize that system design is about trade-offs, not perfect solutions - every choice has costs"
-    - "Start with requirements gathering - this is often overlooked but critical for good design"
-    - "Focus on the thinking process, not memorizing specific architectures"
-    - "Draw diagrams constantly - visual communication is key in system design interviews"
-    - "Address scalability incrementally - don't jump to Google-scale immediately"
-    - "Connect concepts back to algorithms and data structures from previous weeks"
+    - "Scope ruthlessly: agree on API and scale first."
+    - "CAP is about trade-offs; pick consistency per operation."
+    - "Caching strategy and invalidation plan up front."
+    - "Defense technique: risks, mitigations, and why now vs later."
   time_cues:
     - minute: 10
-      note: "Should be starting URL shortener deep dive - ensure students understand the framework approach"
-    - minute: 35
-      note: "Transition to rate limiting - this is a concrete algorithmic problem within system design"
-    - minute: 55
-      note: "Begin database scaling discussion - connect to storage calculations from URL shortener"
+      note: "quick pattern recap."
+    - minute: 30
+      note: "switch to shortener; enforce timeboxes."
     - minute: 75
-      note: "Start mock interview practice - students should apply framework to new problem"
+      note: "2-minute defenses."
   demo_steps:
-    - "Show requirements gathering process: clarify scale, features, constraints upfront"
-    - "Draw high-level architecture: client, load balancer, application servers, databases"
-    - "Zoom into each component: what does the URL shortening service actually do?"
-    - "Calculate throughput and storage: make numbers concrete and realistic"
-    - "Identify bottlenecks: where will this system break as it scales?"
-    - "Propose solutions with trade-offs: caching improves reads but adds complexity"
+    - "Whiteboard a working shortener schema (id, long_url, ttl, clicks)."
+    - "Walk a token-bucket timeline under burst load."
   faq:
-    - question: "How do I know if I need to use microservices vs a monolith?"
-      answer: "Start with a monolith for clarity. Discuss microservices only when you can justify the added complexity with specific benefits like team autonomy or independent scaling needs."
-    - question: "Should I mention specific technologies like Redis or Cassandra?"
-      answer: "Yes, but justify your choice. Don't just name-drop - explain why Redis makes sense for caching or why Cassandra fits your data model and scale requirements."
-    - question: "How detailed should I get with the database schema?"
-      answer: "Show key entities and relationships, but don't spend too much time on every field. Focus on how the schema supports your core use cases and scales."
-
-industry_tip:
-  title: "System Design Interview Strategy"
-  bullets:
-    - "Always ask clarifying questions first - scale, features, constraints, success metrics"
-    - "Start with simple architecture, then evolve - don't jump to complex distributed system immediately"
-    - "Make your thought process explicit - narrate trade-offs and decision reasoning"
-    - "Numbers matter - calculate storage, throughput, and capacity requirements"
-    - "Draw constantly - architecture diagrams make abstract concepts concrete for interviewer"
-  source: "Success With SCE slides on technical communication"
+    - question: "Do I always need a message queue?"
+      answer: "No; introduce when async processing or back-pressure is required."
 
 style:
   theme: "academic"
-  layout: "single-column"
-  callouts: ["tip", "caution", "industry"]
-  slide_count_target: 28
+  layout: "two-column"
+  callouts: ["do-dont", "tip"]
+  slide_count_target: 22

@@ -1,142 +1,93 @@
 id: "week05-industry-mixer"
-title: "All About Interviewing - Industry Mixer"
+title: "Industry Mixer — Technical Interview Breakouts"
 week: 5
 duration: "90 minutes"
 
 objectives:
-  - "Develop strategies to manage technical interview anxiety effectively"
-  - "Practice articulating technical problem-solving approaches clearly"
-  - "Build confidence through structured peer interaction and feedback"
-  - "Network with industry professionals and learn about diverse career paths"
-  - "Create a 1-minute technical introduction template for future interviews"
+  - "Present a concise 60-second problem-solving walkthrough using a structured template."
+  - "Apply a DSA template (hash map, two-pointers, sliding window, or heap) to a new prompt."
+  - "Solve one medium-difficulty problem collaboratively and justify the chosen approach."
+  - "Test your explanation with a peer and refine based on feedback."
 
 agenda:
   - time: "16:00"
-    activity: "Welcome and virtual room orientation"
-    duration: 5
-  - time: "16:05"
-    activity: "Mini-presentation: Technical Interview Fundamentals"
-    duration: 15
-  - time: "16:20"
-    activity: "Anxiety management and confidence building techniques"
+    activity: "Mini-deck: interview pacing & templates (10 min)"
     duration: 10
+  - time: "16:10"
+    activity: "Breakout #1: DSA practice (pairs)"
+    duration: 20
   - time: "16:30"
-    activity: "1-minute technical introduction practice"
-    duration: 15
-  - time: "16:45"
-    activity: "Breakout rooms: Mock interview scenarios"
-    duration: 30
+    activity: "Breakout #2: explanation swap"
+    duration: 25
+  - time: "16:55"
+    activity: "Breakout #3: system-design micro-prompt"
+    duration: 20
   - time: "17:15"
-    activity: "Industry professional Q&A panel"
-    duration: 10
-  - time: "17:25"
-    activity: "Action items and follow-up commitments"
-    duration: 5
+    activity: "Share-outs & next steps"
+    duration: 15
 
 topics:
-  - "Networking"
+  - "DSA"
+  - "System-Design"
 
 prior_knowledge:
-  - "Basic problem-solving experience from Weeks 1-4"
-  - "Familiarity with common data structures (arrays, trees, graphs)"
-  - "Experience explaining technical concepts to others"
+  - "Recall 2–3 core patterns (hash map, sliding window, heap)."
+  - "Outline a basic client-service-database architecture."
 
 activities:
-  - type: "discussion"
-    title: "Technical Interview Anxiety Audit"
-    time_minutes: 10
-    steps:
-      - "Share one technical interview fear or challenging experience"
-      - "Identify common anxiety triggers across the group"
-      - "Discuss breathing techniques and reframing strategies"
-      - "Practice positive self-talk and confidence anchors"
-      - "Set realistic expectations for interview performance"
   - type: "lab"
-    title: "1-Minute Technical Introduction Crafting"
-    time_minutes: 15
+    title: "Breakout rotations"
+    time_minutes: 45
     steps:
-      - "Structure: Name, background, technical interests, current learning"
-      - "Practice delivery with clear, confident speaking pace"
-      - "Include one specific technical project or accomplishment"
-      - "End with genuine question about the role or company"
-      - "Record yourself (optional) and self-assess clarity and enthusiasm"
-  - type: "coding"
-    title: "Mock Interview Breakout Rooms"
-    time_minutes: 30
-    steps:
-      - "Pair up in breakout rooms (interviewer/interviewee roles)"
-      - "Use easy-medium LeetCode problems from previous weeks"
-      - "Focus on communication: think-aloud problem solving"
-      - "Practice asking clarifying questions before coding"
-      - "Give constructive feedback on explanation clarity"
-      - "Switch roles halfway through the session"
+      - "Pick a DSA prompt; silently outline inputs, outputs, constraints (2 min)."
+      - "State your approach in 60 seconds using the template: **Given → Constraints → Strategy → Complexity**."
+      - "Code the core function and run one non-trivial test."
+      - "Swap roles; partner restates your solution back to you and offers one improvement."
 
 assessment:
   - type: "reflection"
-    instructions: "Write a 3-4 sentence reflection on: What interview anxiety management technique will you try first? What aspect of technical communication do you want to improve most?"
-  - type: "quiz"
-    instructions: "Rate yourself 1-5 on: problem explanation clarity, question asking, confidence level, technical accuracy. Identify your lowest area for focused practice."
+    instructions: "Submit a 1-page reflection with: (1) the prompt you attempted; (2) the pattern you chose and why; (3) final complexity; (4) one improvement for clarity under time pressure."
 
 resources:
   core:
-    - title: "Cracking the Coding Interview - Behavioral Questions"
-      url: "https://www.crackingthecodinginterview.com/"
-      why: "Industry standard guide for both technical and behavioral interview preparation"
-    - title: "Hoplite Interview Prep Breakout Room"
-      url: "https://sjsu.zoom.us/j/hoplite-interview-prep"
-      why: "Dedicated space for continued practice sessions and peer support"
-    - title: "Technical Interview Checklist"
-      url: "https://github.com/TSiege/Tech-Interview-Cheat-Sheet"
-      why: "Comprehensive reference for common algorithms and data structures in interviews"
+    - title: "Tech Interview Handbook — Answer Frameworks"
+      url: "https://www.techinterviewhandbook.org/behavioral/"
+      why: "Concise structures to pace answers; adapt for technical explanations."
+    - title: "Algorithm Visualizer — Patterns at a glance"
+      url: "https://algorithm-visualizer.org/"
+      why: "Quick recall of DSA patterns for warm-ups."
+    - title: "ByteByteGo — System Design mini-prompts"
+      url: "https://bytebytego.com/"
+      why: "Short prompts to spark architectural discussion."
   enrichment:
-    - title: "Interviewing.io - Practice Platform"
-      url: "https://interviewing.io/"
-    - title: "Pramp - Peer Mock Interviews"
-      url: "https://pramp.com/"
+    - title: "LeetCode Discuss — Patterns"
+      url: "https://leetcode.com/discuss/general-discussion/460599/blind-75-leetcode-questions"
+      why: "Community-curated problem sets by pattern."
 
 speaker_notes:
   beats:
-    - "Start with validation - technical interviews are genuinely challenging, anxiety is normal and shared"
-    - "Focus on growth mindset - every interview is practice, failure is learning opportunity"
-    - "Emphasize communication over perfection - interviewers want to see your thinking process"
-    - "During breakouts, circulate between rooms to provide coaching and encouragement"
-    - "Industry panel should include diverse backgrounds and non-traditional paths to tech"
-    - "End with concrete action items - what will you practice this week?"
+    - "Normalize anxiety: we'll focus on pacing and structure."
+    - "Template unlock: Given → Constraints → Strategy → Complexity."
+    - "Feedback model: restate, praise, suggest, question."
+    - "System design: start with APIs + data model before scaling."
   time_cues:
-    - minute: 15
-      note: "Should be transitioning to anxiety management - gauge room energy and adjust accordingly"
+    - minute: 0
+      note: "send breakout instructions."
     - minute: 30
-      note: "Begin 1-minute introduction practice - this is crucial skill building time"
-    - minute: 45
-      note: "Launch breakout rooms - ensure everyone has a partner and understands the format"
+      note: "rotate and emphasize complexity statement."
     - minute: 75
-      note: "Return to main room for panel Q&A - prepare industry guests with common questions"
+      note: "gather share-outs; assign reflection."
   demo_steps:
-    - "Show example of poor technical explanation: rushed, unclear, no verification"
-    - "Demonstrate improved approach: clarify problem, outline approach, code with narration"
-    - "Model asking good clarifying questions before jumping into solution"
-    - "Practice confident body language and speaking pace"
-    - "Show how to recover gracefully from mistakes or getting stuck"
+    - "Model a 60-second explanation for a simple window problem."
+    - "Sketch a tiny URL shortener API and data model."
   faq:
-    - question: "What if I freeze up during the interview and can't think of anything to say?"
-      answer: "Practice the 'thinking out loud' habit now. Say 'Let me think through this step by step...' and narrate your thought process. This buys time and shows your problem-solving approach."
-    - question: "How do I know if I should ask for hints during an interview?"
-      answer: "After 5-10 minutes of productive struggle, it's appropriate to ask for a hint. Frame it as 'I'm thinking about X approach, am I on the right track?' This shows engagement, not giving up."
-    - question: "Should I mention if I've seen the problem before?"
-      answer: "Yes, be honest but still demonstrate your thinking. Say 'This looks similar to a problem I've practiced, let me work through my approach' and explain each step clearly."
-
-industry_tip:
-  title: "The Reality of Referrals and Applications"
-  bullets:
-    - "75% of tech hires come through referrals - networking is not optional, it's strategic"
-    - "Apply to 10-15 companies you genuinely want to work for, rather than blasting 100 applications"
-    - "Employee referrals dramatically increase callback rates - nurture professional relationships"
-    - "Consider programs like STEP (Google), IBM Accelerate, Uber Career Prep for structured entry points"
-    - "Local meetups and hackathons are goldmines for organic networking opportunities"
-  source: "Success With SCE slides p.12-15"
+    - question: "Should I code or talk first?"
+      answer: "Talk first: confirm understanding, constraints, and trade-offs."
+    - question: "How detailed should complexity be?"
+      answer: "Name big-O for time and space and what drives each term."
 
 style:
   theme: "academic"
-  layout: "single-column"
-  callouts: ["tip", "industry", "career"]
-  slide_count_target: 20
+  layout: "two-column"
+  callouts: ["do-dont", "tip"]
+  slide_count_target: 16
